@@ -1,0 +1,197 @@
+.containerMenuReservacion {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  /* Center the content horizontally */
+}
+
+.appointment-container {
+  background: white;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  width: 90%;
+  /* Occupy most of the container width on smaller screens */
+  max-width: 700px;
+  /* Limit the maximum width on larger screens */
+  margin: 0 auto;
+  /* Center the container horizontally */
+  padding: 20px;
+  /* Add some padding around the content */
+  box-sizing: border-box;
+  /* Include padding in the element's total width and height */
+}
+
+
+.appointment-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* Use relative font sizes for better scaling */
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+.time-selector,
+.services-container,
+.person-selector {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow items to wrap onto multiple lines */
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+  /* Center the buttons */
+}
+
+
+.button-option.selected {
+  border-color: red;
+  color: red;
+}
+
+
+
+
+
+
+
+.butonTime {
+  font-family: "Catamaran";
+  padding: 8px;
+  /* Add padding to the time buttons */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  /* Add a border to the time buttons */
+  cursor: pointer;
+  background-color: white;
+  font-size: 1rem;
+  /* Use relative font sizes */
+}
+
+.buttonConfirmarCita {
+  background-color: red;
+  width: 80%;
+  /* Make the button wider */
+  max-width: 300px;
+  font-family: "Comorant";
+  font-weight: 800;
+  font-style: italic;
+  font-size: 1rem;
+  /* Use relative font sizes */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin: 20px auto;
+  /* Center the button */
+  text-align: center;
+  display: block;
+  /* Make the button a block element */
+}
+/* Contenedor del DatePicker */
+.react-datepicker {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* Header del calendario (mes y año) */
+.react-datepicker__header {
+  background-color: #ff5e57;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  width: 100%;
+}
+
+/* Días de la semana */
+.react-datepicker__day-names {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+  font-family: "Comorant";
+  font-style: italic;
+  font-size: 25px;
+  color: red;
+
+}
+
+/* Días del calendario */
+.react-datepicker__day {
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+}
+
+.react-datepicker__day:hover {
+  background-color: #ff5e57;
+  color: white;
+}
+
+/* Día seleccionado */
+.react-datepicker__day--selected {
+  background-color: #ff5e57;
+  color: white;
+  font-weight: 700;
+}
+
+/* Día actual */
+.react-datepicker__day--today {
+  border: 2px solid #ff5e57;
+  font-weight: 600;
+}
+
+/* Botones de navegación */
+.react-datepicker__navigation {
+  top: 10px;
+}
+
+.react-datepicker__navigation-icon {
+  font-size: 16px;
+  color: white;
+}
+
+/* Input personalizado */
+.custom-datepicker-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ff5e57;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color:white;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.custom-datepicker-input:focus {
+  border-color: #e84118;
+  outline: none;
+}
+h2.react-datepicker__current-month {
+  font-family: "Comorant";
+  padding: 10px;
+  font-size: 30px;
+}
+.react-datepicker__day-name{
+  color:white;
+}
+
+
+
+

@@ -1,0 +1,56 @@
+.servicios-container {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Imagen de fondo opaca */
+.background {
+  position: absolute;
+  inset: 0;
+  /* Cambia la ruta según tu imagen */
+  background-position: center;
+  filter: brightness(50%);
+}
+
+/* Capa oscura para mejorar contraste */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Contenido */
+.texto {
+  position: relative;
+  max-width: 600px;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* Activación de animación */
+.texto.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.titleServicioSection {
+  font-style: italic;
+  font-size: 5vh;
+  width: 100%;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.textIntroServicioSection {
+  font-size: 2.5vh;
+  font-style: italic;
+  margin-top: 5vh;
+}

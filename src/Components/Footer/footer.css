@@ -1,0 +1,45 @@
+.footer {
+  background-image: url(./../../assets/HomeImg/fondoHome.png);
+  /* Color de fondo */
+  padding-top: 20vw;
+  padding-bottom: 20vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footerDerechoAutor {
+  text-align: center;
+  font-size: 6vw;
+}
+
+.titleContFooter {
+  font-size: 8vw;
+  font-style: italic;
+}
+
+.contact-list {
+  font-size: 4vw;
+}
+
+.contact-item {
+  margin-bottom: 2vh;
+}
+
+
+.titleSegFooter {
+
+  font-size: 8vw;
+  font-style: italic;
+
+}
+
+.social-media-list {
+  font-size: 4vw;
+
+
+
+}
+
+.socialMediaItem {
+  margin-bottom: 2vw;
+}
