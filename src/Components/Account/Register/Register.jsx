@@ -27,7 +27,7 @@ export default function Registro() {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost:5249/api/Cliente/Account/register', {
+      const response = await fetch('https://013d-149-22-84-164.ngrok-free.app/api/Cliente/Account/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
