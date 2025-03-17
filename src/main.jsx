@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js")
     .then((registration) => {

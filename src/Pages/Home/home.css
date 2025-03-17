@@ -1,23 +1,24 @@
+/* Estilos generales */
 .containerPresen {
-  background-image: url(../../assets/HomeImg/fondoHome.png);
+  background-image: url('../../assets/HomeImg/fondoHome.png');
   width: 100%;
   height: auto;
   padding-bottom: 15vw;
   padding-top: 25vw;
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0;
 }
 
 .containerHome {
   display: flex;
   justify-content: center;
-  justify-content: center;
   flex-direction: column;
 }
 
-
 .titleHome {
-  font-size: 13vw;
+  /* Título principal: tamaño mínimo 2rem, ideal basado en 4vw, máximo 4rem */
+  font-size:13vw;
   width: 75%;
   text-align: center;
   color: #333333;
@@ -28,40 +29,37 @@
 }
 
 .textDescripcionInicialHome {
+  /* Descripción: tamaño mínimo 1rem, ideal 3vw, máximo 2rem */
   color: #333333;
   margin: auto;
   width: 60%;
   text-align: center;
-  font-size: 6vw;
-  margin-bottom: 5%;
-  line-height: 1;
+  font-size: clamp(1rem, 3vw, 2rem);
   margin-top: 5%;
-  text-shadow: 1px 1px 3px lightgray, 0 0 2px gray;
   margin-bottom: 10vw;
+  text-shadow: 1px 1px 3px lightgray, 0 0 2px gray;
+  font-size: 6vw;
 }
 
 .containerButtonInicialHome {
-  width: 70%;
+  width: 80%;
   height: auto;
   margin: auto;
   padding: 3vw;
   text-align: center;
   margin-bottom: 20vw;
-
-
+  font-size: 2vw;
 }
 
 .buttonIncialHome {
+  /* Botón inicial: tamaño mínimo 1rem, ideal 3vw, máximo 1.5rem */
   text-decoration: none;
-  font-size: 6vw;
+  font-size:3vw;
   color: white;
-  padding: 7%;
-
+  padding: 6%;
 }
 
-
-
-/*Estilos de Escogernos*/
+/* Estilos de Escogernos */
 .containerEscogenos {
   background-color: white;
   width: 100%;
@@ -71,22 +69,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  text-align: center;
 }
 
 .titleHomeEscogernos {
-  font-size: 9vw;
+  /* Títulos secundarios: mínimo 1.5rem, ideal 3.5vw, máximo 3rem */
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
   padding: 10%;
   margin-top: 10%;
 }
 
 .titleHomeServicios {
-  font-size: 9vw;
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
   padding: 10%;
   margin-top: 10%;
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-
 }
 
 .ContainerServicioDestacados {
@@ -96,11 +92,6 @@
   margin: 0;
   background-size: cover;
   background-repeat: no-repeat;
-
-
-
-
-
 }
 
 .containerButtonInicialHomeServicio {
@@ -112,34 +103,27 @@
   text-align: center;
   margin-bottom: 20vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
-
-
-
-
 }
 
 .buttonIncialHomeServicio {
   text-decoration: none;
-  font-size: 6vw;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   color: white;
   padding: 7%;
-
 }
 
 .textDescripcionInicialHomeServicio {
+  /* Descripción secundaria: mínimo 1rem, ideal 3vw, máximo 1.5rem */
   color: #333333;
   margin: auto;
   width: 85%;
   text-align: center;
-  font-size: 5.5vw;
-  margin-bottom: 5%;
-  line-height: 1;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   margin-top: 5%;
   margin-bottom: 10vw;
 }
 
-
-
+/* Estilos para Productos */
 .containerHomeProduct {
   background-color: white;
   padding-bottom: 10vw;
@@ -159,28 +143,27 @@
 
 .titleHomeProduct {
   text-align: center;
-  font-size: 9vw;
+  /* Producto: mínimo 1.5rem, ideal 3.5vw, máximo 3rem */
+  font-size:10vw;
   margin-bottom: 5vw;
-
 }
 
 .descriptionHomeProduct {
   width: 80%;
   text-align: center;
   margin: auto;
+  /* Descripción de producto: mínimo 1rem, ideal 3vw, máximo 1.5rem */
   font-size: 5vw;
   margin-bottom: 10vw;
-
-
-
 }
 
 .containerHomeTestimonio {
   width: 100%;
   height: auto;
   background-image: url('./../../assets/HomeImg/fondoServicio.png');
-
 }
+
+/* Botones comunes */
 .btnCommon {
   font-family: "Comorant", sans-serif;
   font-style: italic;
@@ -191,15 +174,14 @@
   margin: 0 5px;
   display: inline-block;
   text-align: center;
-  width: 150px; /* Opcional: define un ancho común */
+  width: 150px;
+  font-size: 3.5vw;
 }
 
 .btnConocer {
   background-color: #ec7063;
   font-size: 1.5rem;
-  width: 50%;;
-
-  
+  width: 50%;
 }
 
 .btnCrear {
@@ -208,7 +190,6 @@
 
 .btnIniciar {
   background-color: #ec7063;
-  
 }
 
 .btnGroup {
@@ -217,3 +198,10 @@
   gap: 10px;
   font-size: 1.2rem;
 }
+
+/* 
+  Con clamp() se evitan problemas de escalado excesivo en dispositivos móviles, ya que 
+  se establece un tamaño mínimo y máximo para cada fuente.
+  
+  Puedes ajustar los valores de clamp() según tus necesidades de diseño.
+*/

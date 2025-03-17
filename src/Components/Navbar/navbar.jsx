@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'react-feather';
 import logo from './../../assets/logo.png';
 import LogoutModal from './../LogoutModal/LogoutModal.jsx';
+import { useAuth } from './../Utils/AuthProvider/AuthProvider.jsx'; // Importa solo useAuth
 import './navbar.css';
 
 const Navbar = () => {
@@ -10,15 +11,16 @@ const Navbar = () => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
-  const isAuthenticated = Boolean(token);
+  
+  // Usa el hook useAuth para obtener isAuthenticated y logout
+  const { isAuthenticated, logout } = useAuth();
 
   const closeMenu = () => setIsOpen(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    logout();
     setIsLogoutModalOpen(false);
-    window.location.href = '/';
+    navigate('/');
   };
 
   const handleRegisterClick = () => {
@@ -38,22 +40,15 @@ const Navbar = () => {
         <h1 className="title" style={{ fontFamily: "Cormorant", fontStyle: "italic", fontWeight: 800 }}>
           SALÓN XANADU
         </h1>
-
-        {/* Icono de menú */}
         <button onClick={() => setIsOpen(!isOpen)} className="menu-icon">
           {isOpen ? "" : <Menu size={30} color="black" />}
         </button>
       </nav>
-
-      {/* Fondo oscuro cuando el menú está abierto */}
       {isOpen && <div className="overlay" onClick={closeMenu}></div>}
-
-      {/* Menú desplegable */}
       <div className={`nav-menu ${isOpen ? "open" : ""}`} aria-hidden={!isOpen}>
         <button onClick={closeMenu} className="close-icon">
           <X size={30} color="black" />
         </button>
-
         <div className="container_item" style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
           <Link className={`item ${location.pathname === "/" ? "active" : ""}`} to="/" onClick={closeMenu}>Inicio</Link>
           <Link className={`item ${location.pathname === "/services" ? "active" : ""}`} to="/services" onClick={closeMenu}>Servicios</Link>
@@ -73,7 +68,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-
       <LogoutModal
         isOpen={isLogoutModalOpen}
         onClose={() => setIsLogoutModalOpen(false)}
@@ -84,3 +78,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

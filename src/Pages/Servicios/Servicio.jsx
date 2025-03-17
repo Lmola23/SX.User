@@ -7,7 +7,7 @@ import ImgIncial from './../../assets/ServicioImg/ImgPresentServicio.png';
 
 const getServicesFromAPI = async () => {
   try {
-    const response = await fetch('https://013d-149-22-84-164.ngrok-free.app/api/Administrador/Servicio');
+    const response = await fetch('http://localhost:5249/api/Administrador/Servicio');
     const data = await response.json();
     return data.map((service) => ({
       id: service.id,

@@ -1,15 +1,15 @@
 import './home.css';
 import { Link } from "react-router-dom";
 import './../../Style/fonts.css';
-import {T_Nosotros_H,T_Servicio_H} from './../../Components/Targetas/index.js';
+import { T_Nosotros_H, T_Servicio_H } from './../../Components/Targetas/index.js';
 import Img from './../../Utiles/imgHome.js';
 import ImgProduct from './../../assets/HomeImg/imgProductoHome.jpeg';
 import Test_Carusel from './../../Components/Test_Carusel/Test_Carusel.jsx';
-import {FadeInSection} from "../../Components/Utils/index.js";
+import { FadeInSection } from "../../Components/Utils/index.js";
+import { useAuth } from './../../Components/Utils/AuthProvider/AuthProvider.jsx'; // Importa el AuthContext
 
 export default function Home() {
-  const token = localStorage.getItem('token');
-  const isAuthenticated = Boolean(token);
+  const { isAuthenticated } = useAuth(); // Usamos el estado de autenticación del AuthProvider
 
   return (
     <div className='containerHome' style={{ fontFamily: "Comorant" }}>
@@ -22,7 +22,7 @@ export default function Home() {
             En nuestro salón , cada cliente es nuestra estrella. Realzamos tu belleza única con tratamientos exclusivos y atención personalizada.
           </p>
           <div className='containerButtonInicialHome'>
-            { isAuthenticated ? (
+            {isAuthenticated ? (
               <Link className='btnCommon btnConocer' to='/services'>
                 Conocer Servicios
               </Link>
@@ -175,6 +175,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-

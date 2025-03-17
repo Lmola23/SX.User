@@ -23,7 +23,7 @@ export const requestNotificationPermission = async () => {
     if (permission === "granted") {
       console.log("Permiso concedido");
       const token = await getToken(messaging, {
-        vapidKey: "BFRAAcvhN9lZER_ei5o9Mb72-V7YVEltp5UWbWmAcn6oALzzLBMKcX64VsXEX931sVRZsrML9QPwxM8kU29UmXs"
+        vapidKey: "BJBuRxPzZ5cDYq6wyJTShUd0_ElUxr1CVSiPbD3i0WOrX-wfMhwI_9RhPGUR5N-GxaWHurBE5_1sB1Uixmk-cKw"
       });
       console.log("Token de notificación:", token);
       return token;
@@ -34,7 +34,6 @@ export const requestNotificationPermission = async () => {
     console.error("Error al obtener el token:", error);
   }
 };
-
 // ✅ Función para escuchar mensajes en primer plano
 export const onMessageListener = () =>
   new Promise((resolve, reject) => {

@@ -21,7 +21,7 @@ const NuevoSelectorDeCitas = () => {
   useEffect(() => {
     const obtenerDiasDisponibles = async () => {
       try {
-        const respuesta = await fetch("https://013d-149-22-84-164.ngrok-free.app/api/Cliente/Disponibilidad");
+        const respuesta = await fetch("http://localhost:5249/api/Cliente/Disponibilidad");
         if (!respuesta.ok) {
           throw new Error("Error al obtener la disponibilidad");
         }
@@ -38,7 +38,7 @@ const NuevoSelectorDeCitas = () => {
   useEffect(() => {
     const obtenerServicios = async () => {
       try {
-        const respuesta = await fetch("https://013d-149-22-84-164.ngrok-free.app/api/Cliente/Servicio");
+        const respuesta = await fetch("http://localhost:5249/api/Cliente/Servicio");
         if (!respuesta.ok) {
           throw new Error("Error al obtener los servicios");
         }
@@ -114,7 +114,7 @@ const NuevoSelectorDeCitas = () => {
     console.log("Cita a enviar:", JSON.stringify(cita)); // Muestra el JSON que se va a enviar
   
     try {
-      const respuesta = await fetch("https://013d-149-22-84-164.ngrok-free.app/api/ClienteReservaCita/Reservar", {
+      const respuesta = await fetch("http://localhost:5249/api/ClienteReservaCita/Reservar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cita),

@@ -26,6 +26,7 @@ function App() {
   }, []);
 
   return (
+    <div className="AppContainer">
     <AuthProvider>
       <Router>
         <ScrollToTop />
@@ -45,6 +46,7 @@ function App() {
         <Footer />
       </Router>
     </AuthProvider>
+    </div>
   );
 }
 
