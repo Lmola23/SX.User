@@ -1,17 +1,17 @@
+// Login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthProvider/AuthProvider.jsx";
-import "./Login.css"; // Importa el nuevo archivo CSS
+import "./Login.css";
 
 export default function Login() {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const { login } = useAuth(); // Obtener la función login del contexto
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Manejar el envío del formulario de inicio de sesión
-  const handleLogin = async (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -21,24 +21,15 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:5249/api/Cliente/Account/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ NombreUsuario: nombreUsuario, Contraseña: contraseña }),
-        credentials: "include", // Importante para que el navegador envíe y reciba cookies
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Error en el inicio de sesión");
+      const result = await login(nombreUsuario, contraseña);
+      if (result.success) {
+        navigate("/dashboard");
+      } else {
+        setErrorMessage(result.message || "Error en el inicio de sesión");
       }
-
-      console.log("Inicio de sesión exitoso");
-      login(); // Actualizar el estado de autenticación
-      navigate("/dashboard"); // Redirigir a la página protegida
     } catch (error) {
       console.error("Error en el login:", error);
-      setErrorMessage(error.message);
+      setErrorMessage("Error inesperado durante el inicio de sesión.");
     }
   };
 
@@ -46,7 +37,7 @@ export default function Login() {
     <div className="login-modern-container">
       <h2 className="login-modern-title">Iniciar Sesión</h2>
       {errorMessage && <p className="login-modern-error-message">{errorMessage}</p>}
-      <form onSubmit={handleLogin} className="login-modern-form">
+      <form onSubmit={handleLoginSubmit} className="login-modern-form"> {/* Asegúrate de que onSubmit llama a handleLoginSubmit */}
         <div className="input-group">
           <label htmlFor="nombreUsuario">Nombre de Usuario</label>
           <input

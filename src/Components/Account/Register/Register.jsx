@@ -1,8 +1,9 @@
+// RegisterModern.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Utils/AuthProvider/AuthProvider.jsx"; // Asegúrate de que la ruta sea correcta
-import { requestNotificationPermission } from "../../../firebaseconf.js"; // Importa la función para solicitar permisos
-import "./Register.css"; // Importa los estilos CSS
+import { useAuth } from "../../Utils/AuthProvider/AuthProvider.jsx";
+import { requestNotificationPermission } from "../../../firebaseconf.js";
+import "./Register.css";
 
 export default function RegisterModern() {
   const [nombreUsuario, setNombreUsuario] = useState("");
@@ -46,7 +47,7 @@ export default function RegisterModern() {
 
   const registerUser = async (deviceToken) => {
     try {
-      const response = await fetch("http://localhost:5249/api/Administrador/Account/register", {
+      const response = await fetch("http://localhost:5249/api/Cliente/Account/register", { // Changed to /api/Cliente/Account
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -75,7 +76,7 @@ export default function RegisterModern() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:5249/api/Administrador/Account/login", {
+      const response = await fetch("http://localhost:5249/api/Cliente/Account/login", { // Changed to /api/Cliente/Account
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ NombreUsuario: nombreUsuario, Contraseña: contraseña }),
@@ -88,8 +89,8 @@ export default function RegisterModern() {
       }
 
       console.log("Login exitoso");
-      login();
-      navigate("/dashboard"); // Redirige a la página del dashboard
+      login(nombreUsuario, contraseña); // Call the login function from AuthContext
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error en el login:", error);
       setErrorMessage("Error al iniciar sesión después del registro.");

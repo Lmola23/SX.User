@@ -68,7 +68,6 @@
 .register-modern-button:hover {
   background-color: #0056b3;
   transform: translateY(-2px); /* Ligeramente elevado al hacer hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .register-modern-button:disabled {

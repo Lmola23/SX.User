@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-
+import { AuthProvider } from "./Components/Utils/AuthProvider/AuthProvider.jsx";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js")
@@ -15,6 +15,8 @@ if ("serviceWorker" in navigator) {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
