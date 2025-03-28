@@ -1,15 +1,21 @@
-// Login.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthProvider/AuthProvider.jsx";
+import Modal from "../../Modal/Modal.jsx";
 import "./Login.css";
+import "./../../../Style/fonts.css";
 
 export default function Login() {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Si se viene de una ruta protegida, la guardamos; sino redirijimos a "/"
+  const from = location.state?.from?.pathname || "/";
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +29,11 @@ export default function Login() {
     try {
       const result = await login(nombreUsuario, contraseña);
       if (result.success) {
-        navigate("/dashboard");
+        if (result.usuarioId) {
+          localStorage.setItem("usuarioId", result.usuarioId);
+        }
+        // Abre el modal de éxito de login
+        setModalOpen(true);
       } else {
         setErrorMessage(result.message || "Error en el inicio de sesión");
       }
@@ -33,11 +43,16 @@ export default function Login() {
     }
   };
 
+  const handleModalClose = () => {
+    setModalOpen(false);
+    navigate(from, { replace: true });
+  };
+
   return (
-    <div className="login-modern-container">
+    <div className="login-modern-container" style={{ fontFamily: "Comorant" }}>
       <h2 className="login-modern-title">Iniciar Sesión</h2>
       {errorMessage && <p className="login-modern-error-message">{errorMessage}</p>}
-      <form onSubmit={handleLoginSubmit} className="login-modern-form"> {/* Asegúrate de que onSubmit llama a handleLoginSubmit */}
+      <form onSubmit={handleLoginSubmit} className="login-modern-form">
         <div className="input-group">
           <label htmlFor="nombreUsuario">Nombre de Usuario</label>
           <input
@@ -64,6 +79,15 @@ export default function Login() {
           Iniciar Sesión
         </button>
       </form>
+      <p className="login-modern-register-message">
+        ¿No tienes cuenta? <Link to="/register">Toca aquí para crearla</Link>
+      </p>
+      <Modal
+        isOpen={modalOpen}
+        onClose={handleModalClose}
+        title="Login Correcto"
+        Body={`¡Bienvenido ${nombreUsuario}! Has iniciado sesión exitosamente.`}
+      />
     </div>
   );
 }

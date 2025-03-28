@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'react-feather';
 import logo from './../../assets/logo.png';
 import LogoutModal from './../LogoutModal/LogoutModal.jsx';
-import { useAuth } from './../Utils/AuthProvider/AuthProvider.jsx'; // Importa solo useAuth
+import { useAuth } from './../Utils/AuthProvider/AuthProvider.jsx';
 import './navbar.css';
+import './../../Style/fonts.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  
-  // Usa el hook useAuth para obtener isAuthenticated y logout
   const { isAuthenticated, logout } = useAuth();
+  const menuRef = useRef(null);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -21,6 +21,7 @@ const Navbar = () => {
     logout();
     setIsLogoutModalOpen(false);
     navigate('/');
+    closeMenu();
   };
 
   const handleRegisterClick = () => {
@@ -33,41 +34,50 @@ const Navbar = () => {
     closeMenu();
   };
 
+  // Listener para detectar clics fuera del menú
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isOpen && menuRef.current && !menuRef.current.contains(e.target)) {
+        closeMenu();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <>
-      <nav className="navbar">
+        <nav className="navbar">
+        <div className='container-menuSuperior'>
         <img src={logo} className="logo" alt="Logo" />
-        <h1 className="title" style={{ fontFamily: "Cormorant", fontStyle: "italic", fontWeight: 800 }}>
-          SALÓN XANADU
-        </h1>
-        <button onClick={() => setIsOpen(!isOpen)} className="menu-icon">
-          {isOpen ? "" : <Menu size={30} color="black" />}
-        </button>
-      </nav>
-      {isOpen && <div className="overlay" onClick={closeMenu}></div>}
-      <div className={`nav-menu ${isOpen ? "open" : ""}`} aria-hidden={!isOpen}>
-        <button onClick={closeMenu} className="close-icon">
-          <X size={30} color="black" />
-        </button>
-        <div className="container_item" style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
-          <Link className={`item ${location.pathname === "/" ? "active" : ""}`} to="/" onClick={closeMenu}>Inicio</Link>
-          <Link className={`item ${location.pathname === "/services" ? "active" : ""}`} to="/services" onClick={closeMenu}>Servicios</Link>
-          <Link className={`item ${location.pathname === "/products" ? "active" : ""}`} to="/products" onClick={closeMenu}>Productos</Link>
-          <Link className={`item ${location.pathname === "/booking" ? "active" : ""}`} to="/booking" onClick={closeMenu}>Reservaciones</Link>
-          <Link className={`item ${location.pathname === "/blog" ? "active" : ""}`} to="/blog" onClick={closeMenu}>Kenia Blog</Link>
-          {isAuthenticated ? (
-            <>
-              <Link className={`item ${location.pathname === "/profile" ? "active" : ""}`} to="/profile" onClick={closeMenu}>Perfil</Link>
-              <button className="item logout-button" onClick={() => setIsLogoutModalOpen(true)}>Cerrar sesión</button>
-            </>
-          ) : (
-            <>
-              <button className={`item ${location.pathname === "/login" ? "active" : ""}`} onClick={handleLoginClick}>Iniciar sesión</button>
-              <button className={`item ${location.pathname === "/register" ? "active" : ""}`} onClick={handleRegisterClick}>Crear Cuenta</button>
-            </>
-          )}
+          <h1 className="title">SALÓN XANADU</h1>
+          <button onClick={() => setIsOpen(prev => !prev)} className="menu-icon">
+            {isOpen ? <X size={30} color="black" /> : <Menu size={30} color="black" />}
+          </button>
         </div>
-      </div>
+          
+          <div style={{color:"white"}} ref={menuRef} className={`nav-links ${isOpen ? "open" : ""}`}>
+            <Link className={`item ${location.pathname === "/" ? "active" : ""}`} to="/" onClick={closeMenu}>Inicio</Link>
+            <Link className={`item ${location.pathname === "/services" ? "active" : ""}`} to="/services" onClick={closeMenu}>Servicios</Link>
+            <Link className={`item ${location.pathname === "/products" ? "active" : ""}`} to="/products" onClick={closeMenu}>Productos</Link>
+            <Link className={`item ${location.pathname === "/booking" ? "active" : ""}`} to="/booking" onClick={closeMenu}>Reservaciones</Link>
+            {isAuthenticated ? (
+              <>
+                <Link className={`item ${location.pathname === "/perfil" ? "active" : ""}`} to="/perfil" onClick={closeMenu}>Perfil</Link>
+                <button className="item logout-button" onClick={() => setIsLogoutModalOpen(true)}>Cerrar sesión</button>
+              </>
+            ) : (
+              <>
+                <button className={`item ${location.pathname === "/login" ? "active" : ""}`} onClick={handleLoginClick}>Iniciar sesión</button>
+                <button className={`item ${location.pathname === "/register" ? "active" : ""}`} onClick={handleRegisterClick}>Crear Cuenta</button>
+              </>
+            )}
+          </div>
+        </nav>
+      {/* Overlay que cubre toda la pantalla */}
+      {isOpen && <div className="overlay-navar" onClick={closeMenu}></div>}
       <LogoutModal
         isOpen={isLogoutModalOpen}
         onClose={() => setIsLogoutModalOpen(false)}
@@ -78,4 +88,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

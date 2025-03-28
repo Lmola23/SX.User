@@ -4,26 +4,27 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color:white; /* Degradado de azul claro a celeste */
-  padding: 40px;
+  background: linear-gradient(to bottom, #FFB6C1 10%, #FFD6DA 40%, #FFF 90%);
+  margin-top: 25vw;
 }
 
 .register-modern-title {
-  font-size: 3rem; /* Aumenta el tamaño del título */
-  color:black; /* Texto blanco para contrastar con el fondo */
+  font-size: 3rem; /* Tamaño del título */
+  color: black;
   margin-bottom: 40px;
   text-align: center;
 }
 
 .register-modern-form {
-  background-color: #fff;
-  padding: 50px; /* Aumenta el padding interior */
-  border-radius: 15px; /* Bordes más redondeados */
+  background-color: transparent;
+  padding-left: 50px;
+  padding-right: 50px; /* Espaciado interior */
+  border-radius: 15px; /* Bordes redondeados */
   width: 100%;
-  max-width: 500px; /* Ancho máximo un poco mayor */
+  max-width: 500px; /* Ancho máximo */
   display: flex;
   flex-direction: column;
-  gap: 25px; /* Mayor espacio entre elementos */
+  gap: 25px; /* Espacio entre elementos */
 }
 
 .input-group {
@@ -32,16 +33,16 @@
 }
 
 .input-group label {
-  font-size: 1.1rem; /* Aumenta el tamaño de la etiqueta */
+  font-size: 1.1rem; /* Tamaño de la etiqueta */
   color: #333;
   margin-bottom: 10px;
-  font-weight: bold; /* Texto de etiqueta en negrita */
+  font-weight: bold;
 }
 
 .input-group input {
-  padding: 15px 20px; /* Mayor padding interior */
+  padding: 15px 20px; /* Padding interno */
   border: 1px solid #ccc;
-  border-radius: 8px; /* Bordes más redondeados */
+  border-radius: 8px;
   font-size: 1.1rem;
   color: #333;
   transition: border-color 0.3s ease;
@@ -50,24 +51,28 @@
 .input-group input:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  
 }
 
 .register-modern-button {
-  background-color: #007bff;
-  color: white;
-  padding: 16px 25px; /* Mayor padding en el botón */
-  border: none;
-  border-radius: 10px; /* Bordes más redondeados */
+  background-color:transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+  margin: auto;
+  width: auto;
+  font-family: "Comorant";
+  padding: 16px 25px;
+  border-radius: 10px;
   font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones para hover */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil en el botón */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .register-modern-button:hover {
   background-color: #0056b3;
-  transform: translateY(-2px); /* Ligeramente elevado al hacer hover */
+  transform: translateY(-2px);
+  color: white;
 }
 
 .register-modern-button:disabled {
@@ -82,9 +87,10 @@
   margin-bottom: 25px;
   font-size: 1rem;
   text-align: center;
-  font-weight: bold; /* Mensaje de error en negrita */
+  font-weight: bold;
 }
 
+/* Opcional: Estilos para grupo de notificaciones, si se requiere */
 .notifications-group {
   flex-direction: row;
   align-items: center;
@@ -102,4 +108,8 @@
   font-size: 1.1rem;
   color: #333;
   cursor: pointer;
+}
+.register-modern-register-message{
+  font-size: 3vh;
+  margin-top: 2vh;
 }

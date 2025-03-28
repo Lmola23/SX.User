@@ -162,7 +162,7 @@ export default function Home() {
 
         <div className='containerHomeTestimonio'>
           <FadeInSection delay={0.6}>
-            <h3 className='titleHomeProduct' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+            <h3 className='titleHometestimonio' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic",textAlign:"center" }}>
               Testimonios
             </h3>
           </FadeInSection>

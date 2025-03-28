@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/navbar.jsx";
-import { Home, Servicio, Producto, Reservacion } from "./Pages/index.js";
+import { Home, Servicio, Producto, Reservacion,Perfil } from "./Pages/index.js";
 import { Login, Register } from './Components/Account/index.js';
 import { AuthProvider } from './Components/Utils/AuthProvider/AuthProvider.jsx';
 import { ProtectedRoute, ScrollToTop } from './Components/Utils/index.js';
@@ -42,6 +42,11 @@ function App() {
           } />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/perfil" element={
+            <ProtectedRoute>
+              <Perfil />
+            </ProtectedRoute>
+          } />
         </Routes>
         <Footer />
       </Router>

@@ -1,8 +1,8 @@
-// RegisterModern.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthProvider/AuthProvider.jsx";
 import { requestNotificationPermission } from "../../../firebaseconf.js";
+import Modal from "../../Modal/Modal.jsx";
 import "./Register.css";
 
 export default function RegisterModern() {
@@ -12,6 +12,7 @@ export default function RegisterModern() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [welcomeModal, setWelcomeModal] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -47,7 +48,7 @@ export default function RegisterModern() {
 
   const registerUser = async (deviceToken) => {
     try {
-      const response = await fetch("http://localhost:5249/api/Cliente/Account/register", { // Changed to /api/Cliente/Account
+      const response = await fetch("http://localhost:5249/api/Cliente/Account/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -76,7 +77,7 @@ export default function RegisterModern() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:5249/api/Cliente/Account/login", { // Changed to /api/Cliente/Account
+      const response = await fetch("http://localhost:5249/api/Cliente/Account/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ NombreUsuario: nombreUsuario, Contraseña: contraseña }),
@@ -88,18 +89,30 @@ export default function RegisterModern() {
         throw new Error(errorData.message || "Error en el login");
       }
 
+      const result = await response.json();
       console.log("Login exitoso");
-      login(nombreUsuario, contraseña); // Call the login function from AuthContext
-      navigate("/dashboard");
+
+      if (result.usuarioId) {
+        localStorage.setItem("usuarioId", result.usuarioId);
+      }
+
+      login(nombreUsuario, contraseña);
+      // En vez de navegar de inmediato, abrimos el modal de bienvenida.
+      setWelcomeModal(true);
     } catch (error) {
       console.error("Error en el login:", error);
       setErrorMessage("Error al iniciar sesión después del registro.");
     }
   };
 
+  const handleModalClose = () => {
+    setWelcomeModal(false);
+    navigate("/");
+  };
+
   return (
-    <div className="register-modern-container">
-      <h2 className="register-modern-title">Crear Cuenta</h2>
+    <div className="register-modern-container" style={{ fontFamily: "Comorant" }}>
+      <h2 className="register-modern-title" style={{ fontStyle: "italic" }}>Crear Cuenta</h2>
       {errorMessage && <p className="register-modern-error-message">{errorMessage}</p>}
       <form onSubmit={handleRegister} className="register-modern-form">
         <div className="input-group">
@@ -143,13 +156,21 @@ export default function RegisterModern() {
             checked={notificationsEnabled}
             onChange={(e) => setNotificationsEnabled(e.target.checked)}
           />
-          <label htmlFor="notificationsCheckbox">Habilitar Notificaciones</label>
+          <label style={{ fontSize: "2.5vh", fontFamily: "Comorant", fontStyle: "italic" }} htmlFor="notificationsCheckbox">
+            Habilita tus Notificaciones, recordamos tus citas por ti
+          </label>
         </div>
-
         <button type="submit" className="register-modern-button" disabled={isLoading}>
           {isLoading ? "Registrando..." : "Registrarse"}
         </button>
       </form>
+
+      <Modal 
+        isOpen={welcomeModal} 
+        onClose={handleModalClose} 
+        title="Bienvenido"
+        Body={`¡Bienvenido ${nombreUsuario}! Gracias por registrarte en nuestro sistema.`}
+      />
     </div>
   );
 }

@@ -1,19 +1,17 @@
 .footer {
-  background-image: url(./../../assets/HomeImg/fondoHome.png);
-  /* Color de fondo */
-  padding-top: 20vw;
-  padding-bottom: 20vw;
+  background: white;
+  padding-top: 5vw;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .footerDerechoAutor {
   text-align: center;
-  font-size: 6vw;
+  font-size: 4vw;
 }
 
 .titleContFooter {
-  font-size: 8vw;
+  font-size: 6vw;
   font-style: italic;
 }
 
@@ -23,12 +21,13 @@
 
 .contact-item {
   margin-bottom: 2vh;
+  margin-left: 2vh;
 }
 
 
 .titleSegFooter {
 
-  font-size: 8vw;
+  font-size: 6vw;
   font-style: italic;
 
 }
