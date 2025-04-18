@@ -75,7 +75,7 @@ export default function RegisterModern() {
 
   const registerUser = async (deviceToken) => {
     try {
-      const response = await fetch("http://localhost:5249/api/Cliente/Account/register", {
+      const response = await fetch("https://luismola-001-site2.qtempurl.com/api/Cliente/Account/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -104,7 +104,7 @@ export default function RegisterModern() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://luismola-001-site2.qtempurl.com/api/Cliente/Account/login", {
+      const response = await fetch("https://luismola-001-site2.qtempurl.com/api/Cliente/Account/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ NombreUsuario: nombreUsuario, Contraseña: contraseña }),
