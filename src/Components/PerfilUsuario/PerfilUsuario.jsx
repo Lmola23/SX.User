@@ -45,7 +45,7 @@ const PerfilUsuario = () => {
     };
 
     try {
-      const response = await fetch("http://luismola-001-site2.qtempurl.com/api/ClientePerfil/createOpinion", {
+      const response = await fetch("https://luismola-001-site2.qtempurl.com/api/ClientePerfil/createOpinion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend)

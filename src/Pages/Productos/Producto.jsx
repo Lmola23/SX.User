@@ -6,7 +6,7 @@ import {SectionIntro} from './../../Components/Utils/index.js';
 
 const getProductsFromAPI = async () => {
   try {
-    const response = await fetch('http://luismola-001-site2.qtempurl.com/api/Cliente/Producto');
+    const response = await fetch('https://luismola-001-site2.qtempurl.com/api/Cliente/Producto');
     const data = await response.json();
     const productsResolved = data.map((product) => ({
       id: product.id,

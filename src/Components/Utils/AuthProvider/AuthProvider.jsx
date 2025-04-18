@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Usa una variable de entorno para la URL base; asegúrate de definirla en producción.
-  const API_BASE_URL =  "http://luismola-001-site2.qtempurl.com/api";
+  const API_BASE_URL =  "https://luismola-001-site2.qtempurl.com/api";
 
   // Función para verificar la sesión y autenticación del usuario.
   const checkSession = useCallback(async () => {
