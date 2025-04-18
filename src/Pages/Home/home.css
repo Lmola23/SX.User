@@ -146,8 +146,7 @@
 
 .titleHomeProduct {
   text-align: center;
-  /* Producto: mínimo 1.5rem, ideal 3.5vw, máximo 3rem */
-  font-size:5vw;
+  font-size:8vw;
   margin-bottom: 5vw;
   margin-top: 3vh;
 }
@@ -156,7 +155,6 @@
   width: 80%;
   text-align: center;
   margin: auto;
-  /* Descripción de producto: mínimo 1rem, ideal 3vw, máximo 1.5rem */
   font-size: 5vw;
   margin-bottom: 5vw;
 }
@@ -169,7 +167,6 @@
   
 }
 
-/* Botones comunes */
 .btnCommon {
   font-family: "Comorant", sans-serif;
   font-style: italic;

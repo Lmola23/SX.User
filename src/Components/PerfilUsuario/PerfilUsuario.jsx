@@ -45,7 +45,7 @@ const PerfilUsuario = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5249/api/Cliente/Opinion", {
+      const response = await fetch("http://luismola-001-site2.qtempurl.com/api/ClientePerfil/createOpinion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend)
@@ -79,7 +79,8 @@ const PerfilUsuario = () => {
 
   const whatsappURLCancelar = `https://wa.me/NUMERO_ADMINISTRADOR?text=Hola,%20deseo%20cancelar%20mi%20cita.`;
   const whatsappURLCambiar = `https://wa.me/NUMERO_ADMINISTRADOR?text=Hola,%20deseo%20cambiar%20el%20día%20de%20mi%20cita.`;
-
+  const citaPendiente = localStorage.getItem("CitaPendiente");
+  console.log("Valor de localStorage CitaPendiente:", citaPendiente);
   return (
     <div className="perfil-container" style={{ fontFamily: "Comorant" }}>
       <h2>{usuario.nombreUsuario}</h2>
@@ -87,7 +88,8 @@ const PerfilUsuario = () => {
       <div className="perfil-imgCalender-container">
         <img src={calendarioPerfilImg} alt="Calendario" />
       </div>
-      {localStorage.getItem("CitaPendiente") ? (
+      {citaPendiente=="true"? 
+      (
         <>
           <p className="cita-pendiente" style={{ width: "80%", margin: "auto", marginBottom:"2vh" }}>
             Cita reservada: {usuario.fechaCita}
@@ -103,12 +105,14 @@ const PerfilUsuario = () => {
           </div>
         </>
       ) : (
+        <>
         <p className="mensaje-bienvenida"> No tienes citas pendientes. ¡Disfruta tu día!</p>
+        </>
       )}
 
       <div className="feedback-form">
         <h3 style={{ marginBottom: "2vh" }}>
-          ¡Tu opinión es importante para nosotros! ✨ Déjanos tu comentario sobre tu experiencia en nuestro salón y  nuestra página web. 💕
+          ¡Tu opinión es importante para nosotros! ✨ Déjanos tu testimonio sobre tu experiencia en nuestro salón y  nuestra página web. 💕
         </h3>
         <form onSubmit={handleFeedbackSubmit}>
           <textarea
@@ -145,7 +149,7 @@ const PerfilUsuario = () => {
           <button className="notifications-button" onClick={enableNotifications}>
             Activar Notificaciones
           </button>
-        </div>
+        b</div>
       )}
 
       <Modal 

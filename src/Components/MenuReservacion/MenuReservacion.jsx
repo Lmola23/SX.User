@@ -37,7 +37,7 @@ const NuevoSelectorDeCitas = () => {
   useEffect(() => {
     const obtenerDiasDisponibles = async () => {
       try {
-        const respuesta = await fetch("http://localhost:5249/api/Cliente/Disponibilidad");
+        const respuesta = await fetch("http://luismola-001-site2.qtempurl.com/api/Cliente/Disponibilidad");
         if (!respuesta.ok) throw new Error("Error al obtener la disponibilidad");
         const datos = await respuesta.json();
         setDiasDisponibles(Array.isArray(datos) ? datos : []);
@@ -51,7 +51,7 @@ const NuevoSelectorDeCitas = () => {
   useEffect(() => {
     const obtenerServicios = async () => {
       try {
-        const respuesta = await fetch("http://localhost:5249/api/Cliente/Servicio");
+        const respuesta = await fetch("http://luismola-001-site2.qtempurl.com/api/Cliente/Servicio");
         if (!respuesta.ok) throw new Error("Error al obtener los servicios");
         const datos = await respuesta.json();
         setServicios(Array.isArray(datos) ? datos : []);
@@ -131,7 +131,7 @@ const NuevoSelectorDeCitas = () => {
       console.log("JSON a enviar:", cita);
     
       try {
-        const respuesta = await fetch("http://localhost:5249/api/ClienteCitas/ReservarCita", {
+        const respuesta = await fetch("http://luismola-001-site2.qtempurl.com/api/ClienteCitas/ReservarCita", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(cita),

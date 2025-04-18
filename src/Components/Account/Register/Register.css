@@ -1,115 +1,286 @@
-.register-modern-container {
+/* --- Estilos Globales y Contenedor Principal --- */
+:root {
+  /* Variables para colores y fuentes si quieres centralizarlas */
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --error-color: #dc3545;
+  --light-gradient-start: #FFB6C1;
+  --light-gradient-mid: #FFD6DA;
+  --light-gradient-end: #FFF;
+  --text-color: #333;
+  --icon-color: #6c757d;
+  --border-color: #ccc;
+}
+
+/* Mejor práctica: usar box-sizing border-box */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Contenedor general de la página/vista */
+.register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #FFB6C1 10%, #FFD6DA 40%, #FFF 90%);
-  margin-top: 25vw;
+  justify-content: center; /* Centra la tarjeta verticalmente */
+  min-height: 100vh; /* Asegura que ocupe al menos toda la altura */
+  background: linear-gradient(to bottom, var(--light-gradient-start) 10%, var(--light-gradient-mid) 40%, var(--light-gradient-end) 90%);
+  padding: 20px; /* Espaciado en pantallas pequeñas */
+  font-family: "Comorant", sans-serif; /* Fallback font */
+  margin-top: 20%;
+}
+
+/* Tarjeta/Contenedor del formulario */
+.register-modern-card {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo ligeramente transparente para ver el gradiente */
+  padding: 30px 40px; /* Espaciado interior */
+  border-radius: 15px; /* Bordes redondeados */
+  width: 100%; /* Ocupa el ancho disponible */
+  max-width: 500px; /* Ancho máximo para legibilidad */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre título, form, mensaje inferior */
+  margin-top: 5vh; /* Un margen superior relativo */
+  margin-bottom: 5vh; /* Margen inferior */
 }
 
 .register-modern-title {
-  font-size: 3rem; /* Tamaño del título */
-  color: black;
-  margin-bottom: 40px;
+  font-size: 2.5rem; /* Tamaño del título ajustado */
+  color: var(--text-color);
+  margin-bottom: 15px; /* Espacio reducido bajo el título */
   text-align: center;
+  font-style: italic; /* Mantenemos tu estilo */
 }
 
+/* --- Formulario y sus Elementos --- */
 .register-modern-form {
-  background-color: transparent;
-  padding-left: 50px;
-  padding-right: 50px; /* Espaciado interior */
-  border-radius: 15px; /* Bordes redondeados */
   width: 100%;
-  max-width: 500px; /* Ancho máximo */
   display: flex;
   flex-direction: column;
-  gap: 25px; /* Espacio entre elementos */
+  gap: 20px; /* Espacio entre grupos de input */
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
+  position: relative; /* Necesario para mensajes de error absolutos si se usan */
 }
 
 .input-group label {
-  font-size: 1.1rem; /* Tamaño de la etiqueta */
-  color: #333;
-  margin-bottom: 10px;
+  font-size: 1rem; /* Tamaño ajustado */
+  color: var(--text-color);
+  margin-bottom: 8px;
   font-weight: bold;
 }
 
 .input-group input {
-  padding: 15px 20px; /* Padding interno */
-  border: 1px solid #ccc;
+  padding: 12px 15px; /* Padding interno */
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  font-size: 1.1rem;
-  color: #333;
-  transition: border-color 0.3s ease;
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
 }
 
 .input-group input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
+/* --- Posicionamiento del Icono de Contraseña --- */
+.password-input-container {
+  position: relative; /* Contenedor relativo para el icono absoluto */
+  display: flex; /* Ayuda a alinear si hubiera más elementos */
+  align-items: center;
+}
+
+/* Input específico dentro del contenedor de contraseña */
+.password-input-container .password-input {
+  /* Añadimos padding a la derecha para dejar espacio VISUAL al icono */
+  padding-right: 45px; /* Ajusta este valor según el tamaño del icono y el espaciado deseado */
+}
+
+.password-toggle-icon {
+  position: absolute; /* Posicionamiento absoluto respecto a .password-input-container */
+  right: 15px;      /* Distancia desde la derecha del contenedor */
+  top: 50%;         /* Lo posiciona a la mitad de la altura del contenedor */
+  transform: translateY(-50%); /* Ajuste fino para centrar verticalmente el icono */
+  cursor: pointer;
+  color: var(--icon-color); /* Color del icono */
+  font-size: 1.1rem; /* Tamaño del icono si es necesario */
+  transition: color 0.2s ease;
+}
+
+.password-toggle-icon:hover {
+  color: var(--primary-color); /* Cambio de color al pasar el mouse */
+}
+
+/* --- Botón de Registro --- */
 .register-modern-button {
-  background-color:transparent;
-  border: 1px solid #007bff;
-  color: #007bff;
-  margin: auto;
-  width: auto;
-  font-family: "Comorant";
-  padding: 16px 25px;
+  background-color: transparent;
+  border: 2px solid var(--primary-color); /* Borde más visible */
+  color: var(--primary-color);
+  margin: 15px auto 0 auto; /* Margen superior y centrado horizontal */
+  width: fit-content; /* Ancho ajustado al contenido */
+  font-family: "Comorant", sans-serif;
+  padding: 12px 25px; /* Padding ajustado */
   border-radius: 10px;
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.1rem; /* Tamaño de fuente ajustado */
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-.register-modern-button:hover {
-  background-color: #0056b3;
+.register-modern-button:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  color: white; /* Texto blanco al hacer hover */
   transform: translateY(-2px);
-  color: white;
 }
 
 .register-modern-button:disabled {
   background-color: #ccc;
+  border-color: #ccc;
+  color: #666;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
+/* --- Mensajes de Error --- */
+/* Mensaje de error general del formulario */
 .register-modern-error-message {
-  color: #dc3545;
-  margin-bottom: 25px;
-  font-size: 1rem;
+  color: var(--error-color);
+  margin-bottom: 15px; /* Espacio antes del formulario */
+  font-size: 0.95rem;
   text-align: center;
   font-weight: bold;
+  padding: 10px;
+  background-color: rgba(220, 53, 69, 0.1); /* Fondo rojo claro */
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  border-radius: 5px;
 }
 
-/* Opcional: Estilos para grupo de notificaciones, si se requiere */
+/* Mensaje de error específico por campo (ej. teléfono) */
+.input-error-message {
+  color: var(--error-color);
+  font-size: 0.85em;
+  margin-top: 5px; /* Espacio desde el input */
+  /* font-style: italic; */ /* Opcional */
+}
+
+/* --- Grupo de Notificaciones --- */
 .notifications-group {
+  display: flex; /* Cambiamos a flex para alinear checkbox y label */
   flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: center; /* Centra verticalmente */
+  gap: 10px; /* Espacio entre checkbox y label */
+  margin-top: 5px; /* Espacio respecto al grupo anterior */
 }
 
 .notifications-group input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  margin-right: 12px;
+  width: 18px; /* Tamaño del checkbox */
+  height: 18px;
+  margin: 0; /* Quitamos márgenes por defecto */
   cursor: pointer;
+  flex-shrink: 0; /* Evita que se encoja */
 }
 
-.notifications-group label {
-  font-size: 1.1rem;
-  color: #333;
+.notifications-group .notifications-label {
+  font-size: 0.9rem; /* Tamaño ajustado para móvil */
+  color: var(--text-color);
   cursor: pointer;
+  margin: 0; /* Quitamos márgenes por defecto */
+  font-weight: normal; /* Quitamos bold de la regla general de label */
+  font-style: italic; /* Mantenemos tu estilo */
+  line-height: 1.4; /* Mejora legibilidad si el texto se parte */
 }
-.register-modern-register-message{
-  font-size: 3vh;
-  margin-top: 2vh;
+
+/* --- Mensaje inferior (Ya tienes cuenta?) --- */
+.register-modern-register-message {
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--text-color);
+}
+.register-modern-register-message a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.register-modern-register-message a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Media Queries para Responsividad --- */
+
+/* Estilos para Tablets (ej. > 600px) */
+@media (min-width: 600px) {
+  .register-modern-card {
+    padding: 40px 50px;
+  }
+
+  .register-modern-title {
+    font-size: 2.8rem;
+  }
+
+  .input-group label {
+    font-size: 1.1rem;
+  }
+
+  .input-group input {
+    font-size: 1.1rem;
+    padding: 14px 18px;
+  }
+
+  .password-input-container .password-input {
+    padding-right: 50px; /* Ajustar si es necesario */
+  }
+
+  .password-toggle-icon {
+     right: 18px;
+     font-size: 1.2rem;
+  }
+
+  .register-modern-button {
+    font-size: 1.2rem;
+    padding: 14px 30px;
+  }
+
+  .notifications-group .notifications-label {
+    font-size: 1rem;
+  }
+
+  .register-modern-register-message {
+      font-size: 1rem;
+  }
+}
+
+/* Estilos para Desktops pequeños y Tablets grandes (ej. > 992px) */
+@media (min-width: 992px) {
+  .register-modern-card {
+      padding: 50px 60px;
+      margin-top: 8vh;
+      margin-bottom: 8vh;
+  }
+
+  .register-modern-title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+  }
+
+  .register-modern-form {
+      gap: 25px; /* Mayor espacio entre campos */
+  }
+  .input-group {
+       gap: 10px; /* Mayor espacio entre label e input */
+  }
+
+   .notifications-group {
+       margin-top: 10px;
+   }
 }
