@@ -7,7 +7,7 @@ import ImgIncial from './../../assets/ServicioImg/ImgPresentServicio.png';
 
 const getServicesFromAPI = async () => {
   try {
-    const response = await fetch('https://luismola-001-site2.qtempurl.com/api/Administrador/Servicio');
+    const response = await fetch('https://luismola-001-site3.qtempurl.com/api/Administrador/Servicio');
     const data = await response.json();
     return data.map((service) => ({
       id: service.id,
