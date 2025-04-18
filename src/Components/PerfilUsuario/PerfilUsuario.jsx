@@ -16,7 +16,7 @@ const PerfilUsuario = () => {
   useEffect(() => {
     const fetchUsuario = async () => {
       try {
-        const respuesta = await fetch(`http://localhost:5249/api/ClientePerfil/${localStorage.getItem("usuarioId")}`);
+        const respuesta = await fetch(`https://luismola-001-site2.qtempurl.com/api/ClientePerfil/${localStorage.getItem("usuarioId")}`);
         if (!respuesta.ok) throw new Error("Error al obtener los datos del usuario");
         const datos = await respuesta.json();
         console.log(datos);
