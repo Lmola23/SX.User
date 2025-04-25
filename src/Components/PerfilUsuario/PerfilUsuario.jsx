@@ -82,81 +82,93 @@ const PerfilUsuario = () => {
   const citaPendiente = localStorage.getItem("CitaPendiente");
   console.log("Valor de localStorage CitaPendiente:", citaPendiente);
   return (
-    <div className="perfil-container" style={{ fontFamily: "Comorant" }}>
-      <h2>{usuario.nombreUsuario}</h2>
-      <p><strong>Contraseña:</strong> {usuario.contraseña}</p>
-      <div className="perfil-imgCalender-container">
-        <img src={calendarioPerfilImg} alt="Calendario" />
+    <div className="perfil-container">
+      <div className="perfil-header">
+        <h2 className="perfil-title">
+          Bienvenido, <span className="username">{usuario?.nombreUsuario}</span>
+        </h2>
       </div>
-      {citaPendiente=="true"? 
-      (
-        <>
-          <p className="cita-pendiente" style={{ width: "80%", margin: "auto", marginBottom:"2vh" }}>
-            Cita reservada: {usuario.fechaCita}
-          </p>
-          <p>¿Deseas cancelar o cambiar el día de tu cita?</p>
-          <div className="botones-container">
-            <a href={whatsappURLCancelar} target="_blank" rel="noopener noreferrer" className="boton-whatsapp-cancelar">
-              Cancelar Cita
-            </a>
-            <a href={whatsappURLCambiar} target="_blank" rel="noopener noreferrer" className="boton-whatsapp-cambiar">
-              Cambiar Día
-            </a>
+
+      <div className="perfil-card">
+        <div className="perfil-info">
+          <div className="perfil-calendar">
+            <img src={calendarioPerfilImg} alt="Calendario" className="calendar-image" />
           </div>
-        </>
-      ) : (
-        <>
-        <p className="mensaje-bienvenida"> No tienes citas pendientes. ¡Disfruta tu día!</p>
-        </>
-      )}
 
-      <div className="feedback-form">
-        <h3 style={{ marginBottom: "2vh" }}>
-          ¡Tu opinión es importante para nosotros! ✨ Déjanos tu testimonio sobre tu experiencia en nuestro salón y  nuestra página web. 💕
-        </h3>
-        <form onSubmit={handleFeedbackSubmit}>
-          <textarea
-            style={{ width: "85%", marginBottom: "1vh" }}
-            value={feedback}
-            onChange={handleFeedbackChange}
-            placeholder="Escribe tu opinión aquí..."
-          ></textarea>
-          <button type="submit" style={{ marginBottom: "3vh" }}>Enviar Opinión</button>
-        </form>
-      </div>
-
-      <div className="politicas-container" style={{ width: "80%", margin: "auto", marginBottom: "5vh" }}>
-        <button className="politicas-button" onClick={togglePoliticas}>
-          {politicasVisible ? "Ocultar Políticas de Consumidor⬆️" : "Mostrar Políticas de Consumidor⬇️"}
-        </button>
-        <div className={`politicas-text ${politicasVisible ? "visible" : ""}`}>
-          <p>
-            Como cliente, es importante que sigas nuestras políticas para garantizar una experiencia positiva para todos.
-            Si no cumples con estas políticas, tu cuenta podría ser bloqueada:
-          </p>
-          <ol style={{ fontSize: "1.2rem", marginBottom: "2vh" }}>
-            <li>1-Respeta los horarios de tus citas.</li>
-            <li>2-Notifica con antelación si necesitas cancelar o cambiar una cita.</li>
-            <li>3-Sigue las instrucciones del personal del salón.</li>
-            <li>4-Trata a todos con respeto y cortesía.</li>
-          </ol>
+          <div className="appointment-status">
+            {citaPendiente === "true" ? (
+              <div className="appointment-active">
+                <div className="appointment-date">
+                  <i className="fas fa-calendar-check"></i>
+                  <p>Tu próxima cita: <span>{usuario.fechaCita}</span></p>
+                </div>
+                <div className="appointment-actions">
+                  <a href={whatsappURLCancelar} target="_blank" rel="noopener noreferrer" className="action-button cancel">
+                    <i className="fas fa-times"></i> Cancelar Cita
+                  </a>
+                  <a href={whatsappURLCambiar} target="_blank" rel="noopener noreferrer" className="action-button reschedule">
+                    <i className="fas fa-exchange-alt"></i> Cambiar Día
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="no-appointment">
+                <p>No tienes citas pendientes</p>
+                <span className="emoji">✨</span>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-      {!notificationsEnabled && (
-        <div className="notifications-container" style={{ marginBottom: "5vh" }}>
-          <p>Se te notificará un día antes de tu cita.</p>
-          <button className="notifications-button" onClick={enableNotifications}>
-            Activar Notificaciones
+        <div className="feedback-section">
+          <h3 className="feedback-title">Tu opinión es importante</h3>
+          <form onSubmit={handleFeedbackSubmit} className="feedback-form">
+            <textarea
+              value={feedback}
+              onChange={handleFeedbackChange}
+              placeholder="Comparte tu experiencia con nosotros..."
+              className="feedback-input"
+            />
+            <button type="submit" className="submit-button">
+              <i className="fas fa-paper-plane"></i> Enviar
+            </button>
+          </form>
+        </div>
+
+        <div className="policies-section">
+          <button className="policies-toggle" onClick={togglePoliticas}>
+            {politicasVisible ? 
+              <><i className="fas fa-chevron-up"></i> Políticas de Usuario</> : 
+              <><i className="fas fa-chevron-down"></i> Políticas de Usuario</>
+            }
           </button>
-        b</div>
-      )}
+          <div className={`policies-content ${politicasVisible ? "visible" : ""}`}>
+            <div className="policy-list">
+              <h4>Políticas importantes:</h4>
+              <ul>
+                <li><i className="fas fa-clock"></i> Respeta los horarios</li>
+                <li><i className="fas fa-bell"></i> Notifica cambios con tiempo</li>
+                <li><i className="fas fa-users"></i> Sigue las instrucciones</li>
+                <li><i className="fas fa-heart"></i> Mantén el respeto</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {!notificationsEnabled && (
+          <div className="notifications-section">
+            <button className="enable-notifications" onClick={enableNotifications}>
+              <i className="fas fa-bell"></i> Activar Notificaciones
+            </button>
+          </div>
+        )}
+      </div>
 
       <Modal 
         isOpen={modalOpen} 
         onClose={() => setModalOpen(false)} 
-        title="Opinión enviada"
-        Body="¡Opinión enviada con éxito!"
+        title="¡Gracias por tu opinión!"
+        Body="Tu feedback nos ayuda a mejorar"
       />
     </div>
   );

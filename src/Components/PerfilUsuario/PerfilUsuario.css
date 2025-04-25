@@ -1,127 +1,265 @@
 .perfil-container {
-  margin-top: 4vh;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Cormorant', serif;
+}
+
+.perfil-header {
   text-align: center;
-}
-
-.perfil-container h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.perfil-container p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.perfil-container .cita-pendiente {
-  font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
-.perfil-container .mensaje-bienvenida {
-  font-size: 1.2rem;
+.perfil-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.username {
+  color: #ec7063;
+  font-weight: 600;
+}
+
+.perfil-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2rem;
   margin-bottom: 2rem;
 }
 
-.perfil-container .botones-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+.perfil-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-.boton-whatsapp-cancelar {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: red;
-  background-color: transparent;
-  border: 1px solid red;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.boton-whatsapp-cambiar {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: #8dff33;
-  background-color: transparent;
-  border: 1px solid #8dff33;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-
-
-.perfil-container .feedback-form {
-  margin-top: 2rem;
-}
-
-.perfil-container .feedback-form textarea {
+.perfil-calendar {
   width: 100%;
-  height: 100px;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: none;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.perfil-container .feedback-form button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: #ec8068;
-  background-color:transparent;
-  border: 1px solid #ec7063;
-  border-radius: 5px;
-  cursor: pointer;
+.calendar-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.perfil-container .feedback-form button:hover {
-  background-color:cornflowerblue;
+.calendar-image:hover {
+  transform: scale(1.02);
+}
+
+.appointment-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.appointment-active {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.appointment-date {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.appointment-date span {
+  color: #ec7063;
+  font-weight: 600;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-button {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.cancel {
+  color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+.cancel:hover {
+  background: #dc3545;
   color: white;
 }
 
-.perfil-container .politicas-container {
-  margin-top: 2rem;
+.reschedule {
+  color: #0d6efd;
+  border: 2px solid #0d6efd;
 }
 
-.perfil-container .politicas-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: black;
-  background-color:transparent;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.perfil-container .politicas-button:hover {
-  background-color: black;
+.reschedule:hover {
+  background: #0d6efd;
   color: white;
 }
 
-.perfil-container .politicas-text {
-  margin-top: 1rem;
-  font-size: 1rem;
-  text-align: left;
+.feedback-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.feedback-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.feedback-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.feedback-input:focus {
+  outline: none;
+  border-color: #ec7063;
+}
+
+.submit-button {
+  background: #ec7063;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #e74c3c;
+  transform: translateY(-2px);
+}
+
+.policies-section {
+  margin-bottom: 2rem;
+}
+
+.policies-toggle {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.policies-toggle:hover {
+  background: #f8f9fa;
+}
+
+.policies-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out;
+  transition: max-height 0.5s ease;
 }
 
-.perfil-container .politicas-text.visible {
-  max-height: 500px; /* Ajusta este valor según la altura del contenido */
+.policies-content.visible {
+  max-height: 500px;
+  padding: 1rem;
 }
-.perfil-imgCalender-container{
-  width:80% ;
-  height: auto;
-  margin: auto;
+
+.policy-list {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
 }
-.feedback-success-message {
-  color: green;
-  font-size: 1.1rem;
+
+.policy-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.policy-list li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notifications-section {
   text-align: center;
-  margin-top: 1rem;
+}
+
+.enable-notifications {
+  background: transparent;
+  border: 2px solid #6c757d;
+  color: #6c757d;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enable-notifications:hover {
+  background: #6c757d;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .perfil-info {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-title {
+    font-size: 2rem;
+  }
+
+  .appointment-actions {
+    flex-direction: column;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-card {
+    padding: 1rem;
+  }
+
+  .feedback-section {
+    padding: 1rem;
+  }
+
+  .perfil-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.perfil-card {
+  animation: fadeIn 0.5s ease-out;
 }

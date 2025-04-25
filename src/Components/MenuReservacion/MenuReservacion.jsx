@@ -230,7 +230,7 @@ const NuevoSelectorDeCitas = () => {
           </div>
 
           <h3 style={{ marginTop: "20px" }}>Servicios</h3>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "10px" }}>
+          <div className="containerServicioReserva" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "10px", }}>
             {servicios.map((servicio) => (
               <button
                 key={servicio.id}

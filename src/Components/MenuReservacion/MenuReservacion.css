@@ -197,7 +197,13 @@ h2.react-datepicker__current-month {
     font-size: 20px;
   }
 }
-
+.containerServicioReserva{
+width: 60%;
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
 
 

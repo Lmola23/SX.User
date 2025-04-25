@@ -186,7 +186,7 @@
   border:solid 2px #ec7063;
   color: #ec7063;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .btnCrear {
@@ -209,10 +209,3 @@
   gap: 10px;
   font-size: 1.2rem;
 }
-
-/* 
-  Con clamp() se evitan problemas de escalado excesivo en dispositivos móviles, ya que 
-  se establece un tamaño mínimo y máximo para cada fuente.
-  
-  Puedes ajustar los valores de clamp() según tus necesidades de diseño.
-*/
