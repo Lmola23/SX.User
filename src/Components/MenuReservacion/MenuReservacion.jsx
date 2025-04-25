@@ -133,7 +133,7 @@ const NuevoSelectorDeCitas = () => {
       try {
         const respuesta = await fetch("https://luismola-001-site3.qtempurl.com/api/ClienteCitas/ReservarCita", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json",credentials: 'include'  },
           body: JSON.stringify(cita),
         });
         if (!respuesta.ok) throw new Error("Error al reservar la cita");
