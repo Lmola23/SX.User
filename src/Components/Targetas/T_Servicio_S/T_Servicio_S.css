@@ -1,106 +1,137 @@
-/* Contenedor de la tarjeta con efecto de giro */
+:root {
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  --transition-time: 0.3s;
+  --border-radius: 12px;
+  --font-primary: 'Comorant', serif;
+}
+
+/* Card Container */
 .card-container {
   position: relative;
-  width: 85%;
-  height: 55vh;
+  width: 100%;
+  aspect-ratio: 16/9;
+  max-height: 500px;
+  min-height: 300px;
+  margin: 2rem auto;
   perspective: 1000px;
-  transition: transform 0.5s ease-in-out;
-  margin: auto;
-  margin-bottom: 3vh;
-  margin-top: 10vh;
+  transform-style: preserve-3d;
 }
 
-/* Lado frontal y trasero */
+.card-container.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.card-container.flipped .back {
+  transform: rotateY(0);
+}
+
+/* Card Base Styles */
 .card {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  overflow: hidden;
   backface-visibility: hidden;
-  transition: transform 0.6s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-time) ease;
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
-/* Imagen de la tarjeta */
+.front {
+  transform: rotateY(0);
+}
+
+.back {
+  transform: rotateY(-180deg);
+}
+
+/* Card Image */
 .card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
-  /* Transición más fluida */
+  transition: transform var(--transition-time) ease;
 }
 
-/* Se vuelve opaca cuando se hace hover */
 .card-image.hovered {
-  opacity: 0.4;
+  transform: scale(1.05);
+  filter: brightness(0.7);
 }
 
-/* Capa que contiene la información */
+/* Card Overlay */
 .card-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  padding: 1.5rem;
   color: white;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.5s ease-in-out;
-  /* Transición más suave */
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.6) 50%,
+    transparent 100%
+  );
 }
 
-/* Mostrar contenido cuando se hace hover */
-.card-container:hover .card-overlay {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-/* Título siempre visible */
-
-
+/* Card Content */
 .titleServicio {
-  font-size: 8vw;
-  font-weight: bold;
-  position: absolute;
-  bottom: 3vw;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-style: italic;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-align: center
 }
 
-/* Contenido oculto al inicio */
-.extra-content {
+.card-content {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  /* Transiciones suaves */
+  transform: translateY(20px);
+  transition: all var(--transition-time) ease;
+  animation: fadeIn 0.3s ease forwards;
 }
 
-/* Aparece cuando se hace hover */
-.card-container:hover .extra-content {
-  opacity: 1;
-  transform: translateY(0);
+.service-details {
+  margin-bottom: 1rem;
 }
 
-.card-container:hover .titleServicio {
-  top: 0vh;
+.content-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Estilos de los botones */
+.description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .reserve-button,
 .benefits-button,
 .back-button {
-  background: transparent;
+  padding: 0.8rem 1.5rem;
   border: 2px solid white;
+  background: transparent;
   color: white;
-  margin-top: 10px;
-  font-size: 2vh;
   cursor: pointer;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-  z-index: 5;
-  margin-right: 2vw;
+  font-family: var(--font-primary);
+  font-size: 1rem;
   font-style: italic;
-  padding: 1vh;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
-  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 25px;
 }
 
 .reserve-button:hover,
@@ -108,58 +139,94 @@
 .back-button:hover {
   background: white;
   color: black;
+  transform: translateY(-2px);
 }
 
-/* Lado trasero */
-.back {
-  background: white;
-  color: white;
-  transform: rotateY(180deg);
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  transition: transform 0.6s ease-in-out;
-  /* Transición de giro más fluida */
-}
-
-.back::before {
-  content: "";
+/* Back Card Styles */
+.back-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Ajusta el valor alfa para la opacidad */
-  z-index: 1;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.titleBeneficio {
-  font-size: 3vh;
-  color: black;
-  font-style: italic;
-  z-index: 2;
-  color: white;
+.back-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-bg);
+}
+
+.back-content {
   position: relative;
-
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
-/* Animación de giro */
-/* Animación de giro más lenta */
-.card-container.flipped .front {
-  transform: rotateY(180deg);
-  transition: transform 1s ease-in-out;
-  /* Aumentamos la duración */
+.back-title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.card-container.flipped .back {
-  transform: rotateY(0);
-  transition: transform 1s ease-in-out;
-  /* Aumentamos la duración */
+.benefits-list {
+  max-height: 60%;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-.descriptionBeneficioServicio {
-  color: black;
-  text-align: start;
-  margin-right: 2vh;
+.benefit-item {
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+  }
+
+  .reserve-button,
+  .benefits-button,
+  .back-button {
+    width: 100%;
+  }
+
+  .benefits-list {
+    max-height: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container {
+    aspect-ratio: 3/4;
+  }
+
+  .card-overlay {
+    padding: 1rem;
+  }
+
+  .titleServicio {
+    font-size: 2.5rem;
+  }
 }
