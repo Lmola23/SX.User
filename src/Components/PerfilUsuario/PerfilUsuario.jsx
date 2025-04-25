@@ -129,6 +129,7 @@ const PerfilUsuario = () => {
 
         {localStorage.getItem("CitaPendiente") === "true" && (
           <div className="appointment-section">
+            <img src={calendarioPerfilImg} alt="imagenDeUncalendario" />
             <h3 className="section-title">
               <FaCalendarCheck /> Tu Próxima Cita
             </h3>

@@ -18,6 +18,7 @@ const ServicioCard = ({ servicio }) => {
       className={`card-container ${flipped ? "flipped" : ""}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      style={{fontFamily:"Comorant"}}
     >
       {/* Front Card */}
       <div className="card front">
@@ -41,7 +42,7 @@ const ServicioCard = ({ servicio }) => {
                   {Incluye}
                 </p>
                 <p className="price">
-                  Precio: {price}
+                  Precio: {price}$
                 </p>
               </div>
 
