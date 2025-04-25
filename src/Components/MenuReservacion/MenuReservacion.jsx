@@ -133,20 +133,29 @@ const NuevoSelectorDeCitas = () => {
       try {
         const respuesta = await fetch("https://luismola-001-site3.qtempurl.com/api/ClienteCitas/ReservarCita", {
           method: "POST",
-          headers: { "Content-Type": "application/json",credentials: 'include'  },
+          headers: { 
+            "Content-Type": "application/json"
+          },
+          credentials: 'include',  // Movido fuera del headers
           body: JSON.stringify(cita),
         });
-        if (!respuesta.ok) throw new Error("Error al reservar la cita");
     
+        // Obtener el contenido de la respuesta antes de validar
+        const data = await respuesta.json();
+    
+        if (!respuesta.ok) {
+          throw new Error(data.message || "Error al reservar la cita");
+        }
+    
+        // Si llegamos aquí, la cita se creó exitosamente
         localStorage.setItem("CitaPendiente", "true");
         setCitaPendiente(true);
         setModalAbierto(true);
       } catch (error) {
         console.error("Error al reservar la cita:", error);
-        alert("Error al reservar la cita");
+        alert(error.message || "Error al reservar la cita");
       }
     };
-
   const handleCerrarModal = () => {
     setModalAbierto(false);
     navigate("/");
