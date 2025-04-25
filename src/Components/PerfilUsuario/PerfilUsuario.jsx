@@ -77,8 +77,8 @@ const PerfilUsuario = () => {
   if (error) return <p className="error">{error}</p>;
   if (!usuario) return <p className="error">No se encontraron datos del usuario.</p>;
 
-  const whatsappURLCancelar = `https://wa.me/NUMERO_ADMINISTRADOR?text=Hola,%20deseo%20cancelar%20mi%20cita.`;
-  const whatsappURLCambiar = `https://wa.me/NUMERO_ADMINISTRADOR?text=Hola,%20deseo%20cambiar%20el%20día%20de%20mi%20cita.`;
+  const whatsappURLCancelar = `https://wa.me/+53 5 5890908?text=Hola,%20deseo%20cancelar%20mi%20cita.`;
+  const whatsappURLCambiar = `https://wa.me/+53 5 5890908?text=Hola,%20deseo%20cambiar%20el%20día%20de%20mi%20cita.`;
   const citaPendiente = localStorage.getItem("CitaPendiente");
   console.log("Valor de localStorage CitaPendiente:", citaPendiente);
   return (
