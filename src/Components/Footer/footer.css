@@ -17,6 +17,10 @@
 .footer-section {
   flex: 1;
   min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .footer-title {
@@ -67,6 +71,7 @@
   text-decoration: none;
   color: inherit;
   width: 100%;
+  margin: auto;
 }
 
 .social-link:hover {

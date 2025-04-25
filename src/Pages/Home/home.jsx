@@ -154,7 +154,7 @@ export default function Home() {
           </FadeInSection>
 
           <div className='containerButtonInicialHomeServicio'>
-            <Link className='buttonIncialHomeServicio' to='/Servicios' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
+            <Link className='buttonIncialHomeServicio' to='/products' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
               Conocer Productos
             </Link>
           </div>

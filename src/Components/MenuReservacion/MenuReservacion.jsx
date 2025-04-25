@@ -25,7 +25,7 @@ const NuevoSelectorDeCitas = () => {
   const [citaPendiente, setCitaPendiente] = useState(false);
   const [modalAbierto, setModalAbierto] = useState(false);
 
-  const whatsappURL = "https://wa.me/1234567890?text=Hola,%20necesito%20asistencia%20con%20una%20reserva.";
+  const whatsappURL = "https://wa.me/+53 5 5890908?text=Hola,%20necesito%20asistencia%20con%20una%20reserva.";
 
   const formatearFecha = (fecha) => fecha.toISOString().split("T")[0];
 
