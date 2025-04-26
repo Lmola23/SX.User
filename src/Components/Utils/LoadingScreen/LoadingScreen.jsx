@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Logo from "./../../../assets/Logo.png";
+import Logo from "./../../../assets/logo.png";
 import "./LoadingScreen.css";
 
 const LoadingScreen = () => {
