@@ -5,14 +5,12 @@ import "./LoadingScreen.css";
 
 const LoadingScreen = ({ onLoadingComplete }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [resourcesReady, setResourcesReady] = useState(false);
 
   useEffect(() => {
     const checkResources = async () => {
       try {
-        // Esperar a que todos los recursos estén cargados
+        // Esperar a que la página (imágenes y estilos) esté completamente cargada
         await Promise.all([
-          // Esperar que las imágenes se carguen
           new Promise(resolve => {
             if (document.readyState === 'complete') {
               resolve();
@@ -20,25 +18,18 @@ const LoadingScreen = ({ onLoadingComplete }) => {
               window.addEventListener('load', resolve);
             }
           }),
-          // Esperar que los estilos se apliquen
           new Promise(resolve => {
             requestAnimationFrame(() => {
               requestAnimationFrame(resolve);
             });
-          }),
-          // Tiempo mínimo de carga para una mejor experiencia
-          new Promise(resolve => setTimeout(resolve, 5000))
+          })
         ]);
 
-        setResourcesReady(true);
-        
-        // Esperar a que la animación de salida termine
-        setTimeout(() => {
-          setIsLoading(false);
-          if (onLoadingComplete) onLoadingComplete();
-        }, 500);
+        // Una vez cargados todos los recursos, se oculta la pantalla de carga
+        setIsLoading(false);
+        if (onLoadingComplete) onLoadingComplete();
       } catch (error) {
-        console.error('Error durante la carga:', error);
+        console.error("Error durante la carga:", error);
         setIsLoading(false);
       }
     };
@@ -64,14 +55,8 @@ const LoadingScreen = ({ onLoadingComplete }) => {
           >
             <motion.div 
               className="loading-logo-container"
-              animate={{ 
-                scale: [1, 1.1, 1],
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <img src={Logo} alt="Logo" className="loading-logo" />
             </motion.div>
