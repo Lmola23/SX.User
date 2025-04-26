@@ -216,7 +216,7 @@ export default function RegisterModern() {
         </form>
 
         <p className="register-modern-register-message">
-            ¿Ya tienes cuenta? <a href="/login">Inicia Sesión</a>
+            ¿Ya tienes cuenta? <Link to="/login">Iniciar Sesión</Link>
         </p>
       </div>
 
