@@ -27,7 +27,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
             });
           }),
           // Tiempo mínimo de carga para una mejor experiencia
-          new Promise(resolve => setTimeout(resolve, 6000))
+          new Promise(resolve => setTimeout(resolve, 5000))
         ]);
 
         setResourcesReady(true);
