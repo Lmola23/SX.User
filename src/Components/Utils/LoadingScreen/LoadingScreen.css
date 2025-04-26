@@ -58,3 +58,25 @@
       width: 100px;
     }
   }
+  /* ...existing code... */
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dot {
+  font-size: 2rem;
+  color: #ec7063;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
