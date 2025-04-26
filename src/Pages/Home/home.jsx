@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './home.css';
 import { Link } from "react-router-dom";
 import './../../Style/fonts.css';
@@ -6,13 +7,43 @@ import Img from './../../Utiles/imgHome.js';
 import ImgProduct from './../../assets/HomeImg/imgProductoHome.jpeg';
 import Test_Carusel from './../../Components/Test_Carusel/Test_Carusel.jsx';
 import { FadeInSection } from "../../Components/Utils/index.js";
-import { useAuth } from './../../Components/Utils/AuthProvider/AuthProvider.jsx'; // Importa el AuthContext
+import { useAuth } from './../../Components/Utils/AuthProvider/AuthProvider.jsx';
+import PageWrapper from '../../Components/Utils/PageWraper/PageWraper';
 
 export default function Home() {
-  const { isAuthenticated } = useAuth(); // Usamos el estado de autenticación del AuthProvider
+  const { isAuthenticated } = useAuth();
+  const [isContentLoading, setIsContentLoading] = useState(true);
+
+  useEffect(() => {
+    // Simular carga de recursos
+    Promise.all([
+      // Precarga de imágenes principales
+      new Promise(resolve => {
+        const img = new Image();
+        img.src = ImgProduct;
+        img.onload = resolve;
+      }),
+      // Precarga de imágenes de servicios
+      ...Object.values(Img).map(imgSrc => 
+        new Promise(resolve => {
+          const img = new Image();
+          img.src = imgSrc;
+          img.onload = resolve;
+        })
+      )
+    ]).then(() => {
+      setIsContentLoading(false);
+    });
+  }, []);
+
 
   return (
-    <div className='containerHome' style={{ fontFamily: "Comorant" }}>
+    <PageWrapper>
+    <div 
+      className='containerHome' 
+      style={{ fontFamily: "Comorant" }}
+      data-loading={isContentLoading}
+    >
       <div className='containerPresen'>
         <FadeInSection>
           <h2 className='titleHome' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
@@ -173,5 +204,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </PageWrapper>
   );
 }

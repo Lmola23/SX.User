@@ -3,6 +3,7 @@ import {T_Producto_P} from './../../Components/Targetas/index.js';
 import ImgInicial from '../../assets/ProductImg/imgProductoInicial.jpeg';
 import { useState, useEffect } from 'react';
 import {SectionIntro} from './../../Components/Utils/index.js';
+import PageWrapper from '../../Components/Utils/PageWraper/PageWraper';
 
 const getProductsFromAPI = async () => {
   try {
@@ -26,24 +27,57 @@ const getProductsFromAPI = async () => {
 
 export default function Producto() {
   const [products, setProducts] = useState([]);
+  const [isContentLoading, setIsContentLoading] = useState(true);
 
   useEffect(() => {
-    const loadProducts = async () => {
-      const productsFromAPI = await getProductsFromAPI();
-      console.log("Productos desde API:", productsFromAPI);
-      setProducts(productsFromAPI);
+    const loadContent = async () => {
+      try {
+        // Cargar productos
+        const productsFromAPI = await getProductsFromAPI();
+        setProducts(productsFromAPI);
+
+        // Precargar imagen inicial
+        await new Promise((resolve) => {
+          const img = new Image();
+          img.src = ImgInicial;
+          img.onload = resolve;
+        });
+
+        // Precargar imágenes de productos
+        await Promise.all(
+          productsFromAPI.map((product) => {
+            return new Promise((resolve) => {
+              const img = new Image();
+              img.src = product.image;
+              img.onload = resolve;
+              img.onerror = resolve; // Manejar errores de carga
+            });
+          })
+        );
+
+        setIsContentLoading(false);
+      } catch (error) {
+        console.error('Error loading content:', error);
+        setIsContentLoading(false);
+      }
     };
-    loadProducts();
+
+    loadContent();
   }, []);
 
   return (
-    <div className='containerProductSection'>
-      <SectionIntro
-        title="Descubre tu mejor versión"
-        textIntro="En Salón Xanadu, te ofrecemos productos de alta calidad para realzar tu belleza y cuidar tu cabello y piel. Explora nuestra selección y encuentra los aliados perfectos para tu rutina de belleza."
-        ImgIntro={ImgInicial}
-      />
-      <T_Producto_P products={products} />
-    </div>
+    <PageWrapper>
+      <div 
+        className='containerProductSection'
+        data-loading={isContentLoading}
+      >
+        <SectionIntro
+          title="Descubre tu mejor versión"
+          textIntro="En Salón Xanadu, te ofrecemos productos de alta calidad para realzar tu belleza y cuidar tu cabello y piel. Explora nuestra selección y encuentra los aliados perfectos para tu rutina de belleza."
+          ImgIntro={ImgInicial}
+        />
+        <T_Producto_P products={products} />
+      </div>
+    </PageWrapper>
   );
 }

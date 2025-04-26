@@ -9,3 +9,11 @@
 
 
 }
+.perfilContainerPage {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.perfilContainerPage[data-loading="false"] {
+    opacity: 1;
+}
