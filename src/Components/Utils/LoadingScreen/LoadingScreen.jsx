@@ -9,7 +9,7 @@ const LoadingScreen = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowScreen(false);
-    }, 3000); // 3 segundos de duración mínima
+    }, 5000); // 3 segundos de duración mínima
 
     return () => clearTimeout(timer);
   }, []);
