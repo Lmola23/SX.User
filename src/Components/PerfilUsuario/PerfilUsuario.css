@@ -268,3 +268,80 @@
     font-size: 1.75rem;
   }
 }
+.notifications-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.enable-notifications {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #d63384, #e668a7);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.enable-notifications:hover {
+  background: linear-gradient(45deg, #e668a7, #d63384);
+  transform: scale(1.05);
+}
+
+/* Estilo para el icono de notificaciones */
+.bell-icon {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+.notification-message {
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.notifications-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.enable-notifications {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #d63384, #e668a7);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.enable-notifications:hover {
+  background: linear-gradient(45deg, #e668a7, #d63384);
+  transform: scale(1.05);
+}
+
+/* Estilo para el icono de notificaciones */
+.bell-icon {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+.notification-message {
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: 5px;
+  text-align: center;
+}

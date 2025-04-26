@@ -7,6 +7,7 @@ import Modal from "../../Modal/Modal.jsx";
 import "./Register.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 export default function RegisterModern() {
   const [nombreUsuario, setNombreUsuario] = useState("");

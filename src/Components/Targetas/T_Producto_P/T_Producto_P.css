@@ -1,70 +1,96 @@
-/* Estilos generales */
+/* Estilos Generales */
 .product-grid {
-  display: flex;
-  /* Usamos flex para el diseño principal */
-  flex-wrap: wrap;
-  /* Permite que los elementos se ajusten a varias líneas */
-  justify-content: space-between;
-  /* Distribuye los elementos uniformemente */
-  gap: 20px;
-  /* Espacio entre elementos */
-  padding-top: 10vh;
-  /* Ajuste de padding */
-  width: 90%;
-  /* Ancho del grid, puedes ajustarlo */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10vh 2%;
+  width: 95%;
   margin: 0 auto;
-  /* Centrar el grid */
+  max-width: 600px;
 }
 
 .product-card {
-  padding-bottom: 10vh;
-  background: white;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  padding: 0.75rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* Para alinear elementos verticalmente */
-  /* Borde sutil */
-  width: 40%;
-  /* Ancho para 3 columnas, ajusta según necesites */
-  box-sizing: border-box;
-  /* Incluye el padding y el borde en el ancho */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ... (resto de estilos sin cambios) ... */
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .product-image {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  /* Para que la imagen se ajuste sin deformarse */
-  max-height: 300px;
-  /* Altura máxima para evitar imágenes demasiado grandes */
+  height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.03);
+}
+
+.nameProduct {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.3rem 0;
+  color: #333;
+  text-transform: capitalize;
 }
 
 .priceProduct {
-  font-size: 2.5vh;
-  font-weight: 800;
-  /* Tamaño de fuente relativo */
+  font-size: 0.95rem;
+  font-weight: 700;
   color: #d63384;
-  margin-top: 10px;
+  margin-bottom: 0.3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.priceProduct::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #d63384;
+  border-radius: 1px;
 }
 
 .rating {
-  color: gold;
-  margin-top: 5px;
+  color: #ffd700;
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
 }
 
 .details-button {
-  background-color: transparent;
-  color: #d63384;
-  padding: 8px 12px;
-  font-size: 2vh;
-  border-radius: 20px;
-  margin-top: 5px;
-  border: solid 1px #d63384;
-  font-weight: 800;
+  background-color: #d63384;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 16px;
+  margin-top: auto;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
 }
 
+.details-button:hover {
+  background-color: #e668a7;
+  transform: scale(1.05);
+}
 
 /* Estilos para el modal */
 .modal-overlay {
@@ -73,86 +99,102 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  overflow-y: auto;
+  z-index: 2000;
+  padding: 1rem;
 }
 
-body.modal-open {
-  overflow: hidden;
-}
-
+/* Estilos actualizados para el modal */
 .modal-content {
-  background: white;
-  padding: 20px;
-  max-width: 800px;
-  /* Ancho máximo */
+  background: linear-gradient(145deg, #fff, #f7f7f7);
+  padding: 1rem;
   width: 90%;
-  /* Ajuste para pantallas pequeñas */
-  text-align: left;
-  /* Texto alineado a la izquierda */
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   position: relative;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.4s ease-out;
+  overflow: scroll;
+  height: 80%;
+}
+
+/* Para que la imagen se vea completa y con estilo */
+.modal-content .product-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Detalles de contenido del modal */
+.details-text {
+  text-align: left;
+  line-height: 1.5;
+  margin-top: 1rem;
+  color: #444;
+}
+
+/* Se puede suavizar el overlay*/
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes modalAppear {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
+  top: 8px;
+  right: 12px;
   background: transparent;
+  border: none;
   font-size: 1.2rem;
+  color: #d63384;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
 }
 
 .product-details {
   display: flex;
-  gap: 20px;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.75rem;
   text-align: center;
 }
 
-
-.modal-content {
-  /* Imagen dentro del modal */
-  max-width: 40vh;
-  height: 65vh;
-  object-fit: contain;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  border-radius: 20px;
+.details-text {
+  text-align: left;
+  line-height: 1.4;
 }
 
-.add-button {
-  background-color: #d63384;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 5px;
-  margin-top: 10px;
+.details-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0;
 }
 
-.nameProduct {
-  font-size: 2vh;
-  font-weight: 100;
-  font-style: italic;
-}
-.priceProduct{
-  margin: 0;
-}
-
-.modal-content p {
-  /* Estilos para los párrafos dentro del modal */
-  margin-bottom: 10px;
+.details-text li {
+  margin-bottom: 0.3rem;
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.85rem;
+  color: #555;
 }
 
-.descriptionBeneficioProduct {
-  text-align: start;
+.details-text li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #d63384;
 }

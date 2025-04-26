@@ -1,119 +1,121 @@
+/* Reset y tipografía global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Comorant", sans-serif;
 }
 
-.container-menuSuperior{
+/* Navbar contenedor */
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 15%;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1100;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: white;
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-  padding: 10px 0;
+  padding: 0.75em 1.5em;
 }
 
-.title {
-  font-size: 2vw;
-  color: #333333;
-  text-shadow: 1px 1px 3px lightgray, 0 0 2px gray;
+/* Sección izquierda: logo y título */
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .logo {
-  width: 5vw;
-  max-width: 120px;
+  width: 50px;
+  max-width: 70px;
 }
 
+.title {
+  font-size: 1.5rem;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Icono de menú para móvil */
 .menu-icon {
-  font-size: 28px;
-  cursor: pointer;
+  display: none;
   background: transparent;
   border: none;
-  display: none;
+  cursor: pointer;
 }
 
-/* Overlay que cubre toda la pantalla incluso al hacer scroll */
-.overlay-navar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  height: 1000vh;
-}
-
+/* Menú de navegación */
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 1.5em;
   align-items: center;
 }
 
 .nav-links a,
 .nav-links button {
-  color: white;
+  color: #333;
   text-decoration: none;
-  font-weight: bold;
-  padding: 10px;
+  font-weight: 600;
   background: none;
   border: none;
   cursor: pointer;
   transition: color 0.2s ease;
-  font-size: 3.5vh;
-  font-family: "Comorant";
-  font-style: italic;
+  font-size: 1.5rem;
 }
 
+.nav-links a:hover,
+.nav-links button:hover {
+  color: #e668a7;
+}
+
+/* Indicador de link activo */
 .item.active {
-  border-bottom: 4px solid #ec7063;
+  border-bottom: 2px solid #ec7063;
 }
 
-/* Menú móvil desplegable */
-.nav-links.open {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 75%;
-  height: 100%;
-  flex-direction: column;
-  background:  #FFB6C1 ;
-  color: white;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  z-index: 1000;
-}
-
+/* Estilos para el menú móvil */
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
   }
   .nav-links {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    width: 75%;
+    height: 100%;
+    background: #ffb6c1;
+    padding-top: 4em;
+    gap: 1.5em;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
   }
   .nav-links.open {
-    display: flex;
-  }
-  .title {
-    font-size: 4vw;
-  }
-  .logo {
-    width: 15vw;
+    transform: translateX(0);
   }
 }
 
+/* Overlay para menú móvil */
+.overlay-navar {
+  position: fixed;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* Ajustes de tipografía para dispositivos móviles pequeños */
 @media (max-width: 480px) {
   .title {
-    font-size: 6vw;
+    font-size: 1.5rem;
   }
-  .logo {
-    width: 20vw;
+  .nav-links a,
+  .nav-links button {
+    font-size: 1.5rem;
   }
 }

@@ -6,7 +6,7 @@ function Footer() {
   const contacts = [
     { icon: <FaPhone className="footer-icon" />, value: "55890908" },
     { icon: <FaEnvelope className="footer-icon" />, value: "Keniaconsepcion77@gmail.com" },
-    { icon: <FaMapMarkerAlt className="footer-icon" />, value: "Carretera Principal, Km 5" },
+    { icon: <FaMapMarkerAlt className="footer-icon" />, value: "Ángel Amejeira #29 e/ Juan Gualberto Gómez y Camilo Cienfuegos. Puerto Padre, Las Tunas." },
   ];
 
   const socialMedia = [

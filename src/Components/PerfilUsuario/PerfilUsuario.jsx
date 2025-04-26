@@ -79,9 +79,19 @@ const PerfilUsuario = () => {
   const enableNotifications = async () => {
     try {
       const permission = await Notification.requestPermission();
-      setNotificationsEnabled(permission === "granted");
+      console.log("Permiso de notificación:", permission);
+      if (permission === "granted") {
+        setNotificationsEnabled(true);
+        // Opcional: Mostrar una notificación de prueba
+        new Notification("Notificaciones activadas", {
+          body: "¡Gracias por activar las notificaciones!"
+        });
+      } else {
+        setNotificationsEnabled(false);
+        alert("No se han activado las notificaciones.");
+      }
     } catch (error) {
-      console.error("Error al solicitar permisos:", error);
+      console.error("Error al solicitar permisos de notificaciones:", error);
     }
   };
 
@@ -195,15 +205,19 @@ const PerfilUsuario = () => {
         </div>
 
         {!notificationsEnabled && (
-          <div className="notifications-section">
-            <button 
-              className="enable-notifications"
-              onClick={enableNotifications}
-            >
-              <FaBell /> Activar Notificaciones
-            </button>
-          </div>
-        )}
+  <div className="notifications-section">
+    <button 
+      className="enable-notifications"
+      onClick={enableNotifications}
+    >
+      <FaBell className="bell-icon" />
+      <span>Activar Notificaciones</span>
+    </button>
+    <p className="notification-message">
+      Actívalas para que recordemos tu cita por ti.
+    </p>
+  </div>
+)}
       </div>
 
       <Modal 

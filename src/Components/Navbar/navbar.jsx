@@ -34,7 +34,7 @@ const Navbar = () => {
     closeMenu();
   };
 
-  // Listener para detectar clics fuera del menú
+  // Cierra el menú al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (isOpen && menuRef.current && !menuRef.current.contains(e.target)) {
@@ -42,41 +42,53 @@ const Navbar = () => {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
   return (
     <>
-        <nav className="navbar">
-        <div className='container-menuSuperior'>
-        <img src={logo} className="logo" alt="Logo" />
+      <nav className="navbar">
+        <div className="brand">
+          <img src={logo} className="logo" alt="Logo" />
           <h1 className="title">SALÓN XANADU</h1>
-          <button onClick={() => setIsOpen(prev => !prev)} className="menu-icon">
-            {isOpen ? <X size={30} color="black" /> : <Menu size={30} color="black" />}
-          </button>
         </div>
-          
-          <div style={{color:"white"}} ref={menuRef} className={`nav-links ${isOpen ? "open" : ""}`}>
-            <Link className={`item ${location.pathname === "/" ? "active" : ""}`} to="/" onClick={closeMenu}>Inicio</Link>
-            <Link className={`item ${location.pathname === "/services" ? "active" : ""}`} to="/services" onClick={closeMenu}>Servicios</Link>
-            <Link className={`item ${location.pathname === "/products" ? "active" : ""}`} to="/products" onClick={closeMenu}>Productos</Link>
-            <Link className={`item ${location.pathname === "/booking" ? "active" : ""}`} to="/booking" onClick={closeMenu}>Reservaciones</Link>
-            {isAuthenticated ? (
-              <>
-                <Link className={`item ${location.pathname === "/perfil" ? "active" : ""}`} to="/perfil" onClick={closeMenu}>Perfil</Link>
-                <button className="item logout-button" onClick={() => setIsLogoutModalOpen(true)}>Cerrar sesión</button>
-              </>
-            ) : (
-              <>
-                <button className={`item ${location.pathname === "/login" ? "active" : ""}`} onClick={handleLoginClick}>Iniciar sesión</button>
-                <button className={`item ${location.pathname === "/register" ? "active" : ""}`} onClick={handleRegisterClick}>Crear Cuenta</button>
-              </>
-            )}
-          </div>
-        </nav>
-      {/* Overlay que cubre toda la pantalla */}
+        <button onClick={() => setIsOpen(prev => !prev)} className="menu-icon">
+          {isOpen ? <X size={30} color="black" /> : <Menu size={30} color="black" />}
+        </button>
+        <div ref={menuRef} className={`nav-links ${isOpen ? "open" : ""}`}>
+          <Link className={`item ${location.pathname === "/" ? "active" : ""}`} to="/" onClick={closeMenu}>
+            Inicio
+          </Link>
+          <Link className={`item ${location.pathname === "/services" ? "active" : ""}`} to="/services" onClick={closeMenu}>
+            Servicios
+          </Link>
+          <Link className={`item ${location.pathname === "/products" ? "active" : ""}`} to="/products" onClick={closeMenu}>
+            Productos
+          </Link>
+          <Link className={`item ${location.pathname === "/booking" ? "active" : ""}`} to="/booking" onClick={closeMenu}>
+            Reservaciones
+          </Link>
+          {isAuthenticated ? (
+            <>
+              <Link className={`item ${location.pathname === "/perfil" ? "active" : ""}`} to="/perfil" onClick={closeMenu}>
+                Perfil
+              </Link>
+              <button className="item logout-button" onClick={() => setIsLogoutModalOpen(true)}>
+                Cerrar sesión
+              </button>
+            </>
+          ) : (
+            <>
+              <button className={`item ${location.pathname === "/login" ? "active" : ""}`} onClick={handleLoginClick}>
+                Iniciar sesión
+              </button>
+              <button className={`item ${location.pathname === "/register" ? "active" : ""}`} onClick={handleRegisterClick}>
+                Crear Cuenta
+              </button>
+            </>
+          )}
+        </div>
+      </nav>
       {isOpen && <div className="overlay-navar" onClick={closeMenu}></div>}
       <LogoutModal
         isOpen={isLogoutModalOpen}

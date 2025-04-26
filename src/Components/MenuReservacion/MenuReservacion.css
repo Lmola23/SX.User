@@ -154,7 +154,7 @@ h2.react-datepicker__current-month {
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .buttonConfirmarCita {
-    width: 100%;
+    width: 50%;
     max-width: none;
   }
 
