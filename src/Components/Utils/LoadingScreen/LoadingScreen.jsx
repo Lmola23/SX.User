@@ -8,8 +8,9 @@ const LoadingScreen = ({ onLoadingComplete }) => {
 
   useEffect(() => {
     const checkResources = async () => {
+      const startTime = Date.now();
       try {
-        // Esperar a que la página (imágenes y estilos) esté completamente cargada
+        // Esperar que la página (imágenes y estilos) esté completamente cargada
         await Promise.all([
           new Promise(resolve => {
             if (document.readyState === 'complete') {
@@ -25,7 +26,14 @@ const LoadingScreen = ({ onLoadingComplete }) => {
           })
         ]);
 
-        // Una vez cargados todos los recursos, se oculta la pantalla de carga
+        // Calcular el tiempo transcurrido
+        const elapsed = Date.now() - startTime;
+        const minDelay = 5000; // 5000ms mínimo de pantalla de carga
+        if (elapsed < minDelay) {
+          await new Promise(resolve => setTimeout(resolve, minDelay - elapsed));
+        }
+
+        // Una vez cumplido el tiempo mínimo y cargados todos los recursos
         setIsLoading(false);
         if (onLoadingComplete) onLoadingComplete();
       } catch (error) {
