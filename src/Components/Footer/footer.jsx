@@ -12,7 +12,7 @@ function Footer() {
   const socialMedia = [
     { 
       icon: <FaFacebook className="social-icon" />, 
-      value: "Kenia Conecpcion", 
+      value: "Kenia Concepcion", 
       link: "https://www.facebook.com/share/1AXXj94qRM/?mibextid=wwXIfr" 
     },
     { 
