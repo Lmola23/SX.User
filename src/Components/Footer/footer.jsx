@@ -5,20 +5,20 @@ import './../../Style/fonts.css';
 function Footer() {
   const contacts = [
     { icon: <FaPhone className="footer-icon" />, value: "55890908" },
-    { icon: <FaEnvelope className="footer-icon" />, value: "Keniaconsepcion77@gmail.com" },
+    { icon: <FaEnvelope className="footer-icon" />, value: "Keniaconcepcion77@gmail.com" },
     { icon: <FaMapMarkerAlt className="footer-icon" />, value: "Ángel Amejeira #29 e/ Juan Gualberto Gómez y Camilo Cienfuegos. Puerto Padre, Las Tunas." },
   ];
 
   const socialMedia = [
     { 
       icon: <FaFacebook className="social-icon" />, 
-      value: "Kenia Consepcion", 
+      value: "Kenia Conecpcion", 
       link: "https://www.facebook.com/share/1AXXj94qRM/?mibextid=wwXIfr" 
     },
     { 
       icon: <FaInstagram className="social-icon" />, 
       value: "salon_xanadu", 
-      link: "#" 
+      link: "https://www.instagram.com/salon_xanadu?igsh=enE4dXgwZm1xbGVj&utm_source=qr" 
     },
   ];
 
