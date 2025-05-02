@@ -41,7 +41,7 @@ const ServicioCard = ({ servicio }) => {
                 <p className="description">
                   {Incluye}
                 </p>
-                <p className="price">
+                <p  translate="no"className="price">
                   Precio: {price}$
                 </p>
               </div>

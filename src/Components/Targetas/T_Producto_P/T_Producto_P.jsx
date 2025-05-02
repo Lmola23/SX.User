@@ -46,7 +46,7 @@ const T_Producto_P = ({ products }) => {
                             <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />
                             <div className="details-text">
                                 <h2 style={{ fontStyle: "italic" }}>{selectedProduct.name}</h2>
-                                <p className="priceProduct">{selectedProduct.price}$</p>
+                                <p  translate="no"className="priceProduct">{selectedProduct.price}$</p>
                                 <p>{selectedProduct.description}</p>
                                 {Array.isArray(selectedProduct.beneficio) ? (
                                     <ul>
