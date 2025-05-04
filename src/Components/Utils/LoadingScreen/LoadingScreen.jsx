@@ -28,7 +28,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
 
         // Calcular el tiempo transcurrido
         const elapsed = Date.now() - startTime;
-        const minDelay = 5000; // 5000ms mínimo de pantalla de carga
+        const minDelay = 3000; // 5000ms mínimo de pantalla de carga
         if (elapsed < minDelay) {
           await new Promise(resolve => setTimeout(resolve, minDelay - elapsed));
         }
