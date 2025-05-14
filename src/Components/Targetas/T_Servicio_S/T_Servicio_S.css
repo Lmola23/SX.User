@@ -1,22 +1,27 @@
 :root {
-  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  --overlay-bg: rgba(0, 0, 0, 0.7);
-  --transition-time: 0.3s;
+  --card-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  --overlay-bg: rgba(0, 0, 0, 0.75);
+  --transition-time: 0.35s;
   --border-radius: 12px;
   --font-primary: 'Comorant', serif;
+  --text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Card Container */
 .card-container {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 500px;
-  min-height: 300px;
-  margin: 2rem auto;
-  perspective: 1000px;
+  width: 80%;
+  aspect-ratio: 1/1;
+  height: 60vh;
+  min-height: 30%;
+  margin: 0 auto;
+  perspective: 1200px;
   transform-style: preserve-3d;
   text-align: center;
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .card-container.flipped .front {
@@ -33,17 +38,19 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  transition: transform var(--transition-time) ease;
+  transition: transform var(--transition-time) cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: var(--border-radius);
   overflow: hidden;
 }
 
 .front {
   transform: rotateY(0);
+  z-index: 1;
 }
 
 .back {
   transform: rotateY(-180deg);
+  z-index: 0;
 }
 
 /* Card Image */
@@ -51,12 +58,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-time) ease;
+  transition: transform 0.5s ease;
 }
 
 .card-image.hovered {
-  transform: scale(1.05);
-  filter: brightness(0.7);
+  transform: scale(1.08);
+  filter: brightness(0.8);
 }
 
 /* Card Overlay */
@@ -66,81 +73,94 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.5rem;
+  padding: 0.8rem;
   color: white;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.9) 0%,
-    rgba(0,0,0,0.6) 50%,
-    transparent 100%
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.8) 25%,
+    rgba(0,0,0,0.4) 70%,
+    rgba(0,0,0,0.2) 100%
   );
 }
 
 /* Card Content */
 .titleServicio {
   font-family: var(--font-primary);
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: 1.5rem;
   font-style: italic;
   font-weight: 800;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  text-align: center
+  text-shadow: var(--text-shadow);
+  text-align: center;
+  color: white;
 }
 
 .card-content {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all var(--transition-time) ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   animation: fadeIn 0.3s ease forwards;
 }
 
 .service-details {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .content-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  text-shadow: var(--text-shadow);
 }
 
 .description {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  font-family: Comorant;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  max-width: 100%;
+  text-shadow: var(--text-shadow);
 }
 
 .price {
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: var(--accent-color);
+  text-shadow: var(--text-shadow);
 }
 
 /* Buttons */
 .button-group {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .reserve-button,
 .benefits-button,
 .back-button {
-  padding: 0.8rem 1.5rem;
-  border: 2px solid white;
-  background: transparent;
+  width: 100%;
+  max-width: 180px;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--accent-color);
+  background: rgba(0, 0, 0, 0.3);
   color: white;
   cursor: pointer;
   font-family: var(--font-primary);
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-style: italic;
   transition: all 0.3s ease;
   border-radius: 25px;
+  min-width: max-content;
 }
 
 .reserve-button:hover,
 .benefits-button:hover,
 .back-button:hover {
-  background: white;
-  color: black;
+  background: var(--accent-color);
+  color: #222;
   transform: translateY(-2px);
 }
 
@@ -163,7 +183,7 @@
 .back-content {
   position: relative;
   height: 100%;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -173,28 +193,54 @@
 
 .back-title {
   font-family: var(--font-primary);
-  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-size: 1.1rem;
   font-style: italic;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.7rem;
+  color: var(--accent-color);
+  text-shadow: var(--text-shadow);
 }
 
 .benefits-list {
-  max-height: 60%;
+  max-height: 55%;
   overflow-y: auto;
   padding-right: 10px;
+  width: 100%;
+  scrollbar-width: thin;
 }
 
 .benefit-item {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
   line-height: 1.4;
+  font-size: 0.75rem;
+  text-align: left;
+  text-shadow: var(--text-shadow);
+}
+
+/* Scrollbar personalizado */
+.benefits-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.benefits-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.benefits-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.benefits-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -202,33 +248,127 @@
   }
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .button-group {
-    flex-direction: column;
+/* Media Queries - Tablets */
+@media (min-width: 481px) {
+  .card-container {
+    aspect-ratio: 3/2;
+    max-height: 800px;
+    width: 80%;
   }
-
+  
+  .titleServicio {
+    font-size: 1.4rem;
+  }
+  
+  .description {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  
+  .content-title {
+    font-size: 1rem;
+  }
+  
   .reserve-button,
   .benefits-button,
   .back-button {
-    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
-
+  
+  .back-title {
+    font-size: 1.3rem;
+  }
+  
+  .benefit-item {
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+  
   .benefits-list {
-    max-height: 50%;
+    max-height: 60%;
   }
 }
 
-@media (max-width: 480px) {
+/* Media Queries - Medium Tablets */
+@media (min-width: 769px) {
   .card-container {
-    aspect-ratio: 3/4;
+    aspect-ratio: 3/2;
+    max-height: 400px;
+    width: 80%;
   }
+  
+  .titleServicio {
+    font-size: 1.6rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  .button-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  
+  .reserve-button,
+  .benefits-button,
+  .back-button {
+    width: auto;
+  }
+}
 
+/* Media Queries - Laptops and Desktops */
+@media (min-width: 993px) {
+  .card-container {
+    aspect-ratio: 16/9;
+    min-width: 600px;
+    min-height: 500px;
+  }
+  
   .card-overlay {
     padding: 1rem;
   }
-
+  
   .titleServicio {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  .back-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Media Queries - Large Desktops */
+@media (min-width: 1200px) {
+  .card-container {
+    max-height: 500px;
+  }
+  
+  .card-overlay {
+    padding: 1.5rem;
+  }
+  
+  .titleServicio {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .reserve-button,
+  .benefits-button,
+  .back-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 }

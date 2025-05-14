@@ -1,4 +1,52 @@
 .containerProductSection {
   background-color: white;
   margin-top: 15%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Contenedor de la lista de productos */
+.servicios-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Media queries */
+@media (min-width: 1200px) {
+  .containerProductSection {
+    margin-top: 50%;
+
+  }
+  
+  
+
+  .servicios-list {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerProductSection {
+    margin-top: 10%;
+  }
+
+  .servicios-list {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .containerProductSection {
+    margin-top: 8%;
+  }
+
+  .servicios-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

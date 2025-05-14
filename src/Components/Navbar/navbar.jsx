@@ -57,10 +57,7 @@ const Navbar = () => {
         </button>
         <div ref={menuRef} className={`nav-links ${isOpen ? "open" : ""}`}>
           {/* Encabezado para menú móvil */}
-          <div className="nav-links-header">
-            <div className="menu-title">Menú</div>
-           
-          </div>
+          
           <Link className={`item ${location.pathname === "/" ? "active" : ""}`} to="/" onClick={closeMenu}>
             Inicio
           </Link>

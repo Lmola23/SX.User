@@ -77,20 +77,26 @@ const PerfilUsuario = () => {
   };
 
   const enableNotifications = async () => {
+    if (!("Notification" in window)) {
+      alert("Las notificaciones no son soportadas por tu navegador.");
+      return;
+    }
     try {
       const permission = await Notification.requestPermission();
-      console.log("Permiso de notificación:", permission);
       if (permission === "granted") {
         setNotificationsEnabled(true);
-        // Opcional: Mostrar una notificación de prueba
         new Notification("Notificaciones activadas", {
           body: "¡Gracias por activar las notificaciones!"
         });
+      } else if (permission === "denied") {
+        setNotificationsEnabled(false);
+        alert("Has bloqueado las notificaciones. Debes habilitarlas manualmente en la configuración del navegador.");
       } else {
         setNotificationsEnabled(false);
         alert("No se han activado las notificaciones.");
       }
     } catch (error) {
+      alert("Ocurrió un error al solicitar permisos de notificaciones.");
       console.error("Error al solicitar permisos de notificaciones:", error);
     }
   };

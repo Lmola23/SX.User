@@ -1,37 +1,123 @@
 .testimoniosCarousel {
-  width: 80%;
-  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: auto;
+  padding: 1rem;
 }
 
 .testimonio {
-  padding: 20px;
-  padding-right: 20px;
+  padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
 }
 
 .testimonioText {
-  font-size: 5vw;
-  margin-bottom: 10px;
-  margin-right: 0;
-  width: 90%;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 800px;
   font-style: italic;
+  line-height: 1.6;
+  color: #333;
 }
-
-
 
 .testimonio-autor {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
-  margin-top: 5vw;
+  margin-top: 2rem;
 }
 
 .testimonio-nombre {
   font-weight: 800;
-  font-size: 6vw;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   font-style: italic;
-  margin: auto;
-  font-weight: 800;
+  color: #ec7063;
+}
+
+/* Estilos para el carrusel */
+.testimoniosCarousel :global(.slick-dots) {
+  bottom: -40px;
+}
+
+.testimoniosCarousel :global(.slick-dots li button:before) {
+  font-size: 12px;
+  color: #ec7063;
+}
+
+.testimoniosCarousel :global(.slick-dots li.slick-active button:before) {
+  color: #ec7063;
+}
+
+/* Media queries */
+@media screen and (min-width: 768px) {
+  .testimoniosCarousel {
+    width: 80%;
+    padding: 2rem;
+  }
+
+  .testimonio {
+    min-height: 400px;
+    padding: 3rem;
+  }
+
+  .testimonioText {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .testimoniosCarousel {
+    width: 70%;
+  }
+
+  .testimonio {
+    min-height: 450px;
+  }
+
+  .testimonioText {
+    font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+  }
+}
+
+/* Estilos para las flechas del carrusel */
+.testimoniosCarousel :global(.slick-prev),
+.testimoniosCarousel :global(.slick-next) {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+
+.testimoniosCarousel :global(.slick-prev) {
+  left: -50px;
+}
+
+.testimoniosCarousel :global(.slick-next) {
+  right: -50px;
+}
+
+.testimoniosCarousel :global(.slick-prev:before),
+.testimoniosCarousel :global(.slick-next:before) {
+  font-size: 40px;
+  color: #ec7063;
+}
+
+@media screen and (max-width: 768px) {
+  .testimoniosCarousel :global(.slick-prev) {
+    left: -30px;
+  }
+
+  .testimoniosCarousel :global(.slick-next) {
+    right: -30px;
+  }
+
+  .testimoniosCarousel :global(.slick-prev:before),
+  .testimoniosCarousel :global(.slick-next:before) {
+    font-size: 30px;
+  }
 }

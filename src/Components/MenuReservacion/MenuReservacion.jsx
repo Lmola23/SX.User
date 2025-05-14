@@ -162,22 +162,37 @@ const NuevoSelectorDeCitas = () => {
   };
 
   return (
-    <div className="containerMenuReservacion" style={{ background: "white", fontFamily: "Comorant" }}>
+    <div className="containerMenuReservacion" style={{ 
+      background: "white", 
+      fontFamily: "Comorant",
+      padding: "0 20px",
+      width: "100%",
+      maxWidth: "1200px",
+      margin: "0 auto"
+    }}>
       {citaPendiente ? (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <img src={CitaPendienteImg} alt="Cita Pendiente" style={{ width: "100%", maxWidth: "400px", borderRadius: "5px",marginBottom:"3vh" }} />
-          <p style={{ fontWeight: "bold", fontSize: "3vh",fontFamily:"Comorant" ,fontStyle:"italic",width:"80%",margin:"auto",marginBottom:"3vh"}}>
+        <div className="cita-pendiente-container">
+          <img src={CitaPendienteImg} alt="Cita Pendiente" />
+          <p>
             Usted ya reservó su cita. Si desea reservar otra, por favor contacte a la administradora del salón.
           </p>
           <a href={whatsappURL} target="_blank" rel="noopener noreferrer">
-            <button style={{ padding: "10px 20px", borderRadius: "5px", backgroundColor: "transparent", border: "2px solid #25D366 ", color: "#25D366" }}>
+            <button className="whatsapp-button">
               Contactar por WhatsApp
             </button>
           </a>
         </div>
       ) : (
         <>
-          <h2 style={{ textAlign: "center", fontWeight: "bold", fontSize: "40px", fontStyle: "italic", marginTop: "10vh",marginBottom:"3vh" }}>
+          <h2 style={{ 
+            textAlign: "center", 
+            fontWeight: "bold", 
+            fontSize: "clamp(24px, 5vw, 40px)", 
+            fontStyle: "italic", 
+            marginTop: "10vh",
+            marginBottom: "3vh",
+            padding: "0 15px"
+          }}>
             Selecciona el Día
           </h2>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
@@ -193,6 +208,7 @@ const NuevoSelectorDeCitas = () => {
               openToDate={mesSeleccionado}
               locale="es"
               disabled={citaPendiente}
+            
             />
           </div>
 
@@ -203,8 +219,9 @@ const NuevoSelectorDeCitas = () => {
               gap: "10px",
               marginTop: "10px",
               flexWrap: "wrap",
-              width: "60%",
+              width: "min(90%, 600px)",
               justifyContent: "center",
+              padding: "0 15px"
             }}
           >
             {horasDisponibles.length > 0 ? (
@@ -234,14 +251,7 @@ const NuevoSelectorDeCitas = () => {
             {servicios.map((servicio) => (
               <button
                 key={servicio.id}
-                style={{
-                  padding: "8px",
-                  fontFamily: "Comorant",
-                  borderRadius: "5px",
-                  border: "1px solid",
-                  borderColor: serviciosSeleccionados.includes(servicio.id) ? "red" : "#ddd",
-                  color: serviciosSeleccionados.includes(servicio.id) ? "red" : "black",
-                }}
+                className={`servicio-button ${serviciosSeleccionados.includes(servicio.id) ? 'selected' : ''}`}
                 onClick={() => alternarServicio(servicio.id)}
                 disabled={citaPendiente}
               >

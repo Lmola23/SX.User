@@ -1,21 +1,38 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
 .servicios-container {
   position: relative;
-  width: 100%;
-  height: 50vh;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Imagen de fondo opaca */
 .background {
   position: absolute;
   inset: 0;
-  /* Cambia la ruta según tu imagen */
+  width: 100vw !important;
+  height: 100% !important;
+  background-size: cover;
   background-position: center;
   filter: brightness(50%);
+  transition: transform 0.3s ease;
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Capa oscura para mejorar contraste */
@@ -28,11 +45,12 @@
 /* Contenido */
 .texto {
   position: relative;
-  max-width: 600px;
-  padding: 20px;
+  max-width: min(800px, 90%);
+  padding: clamp(1rem, 3vw, 2rem);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  z-index: 1;
 }
 
 /* Activación de animación */
@@ -43,14 +61,114 @@
 
 .titleServicioSection {
   font-style: italic;
-  font-size: 5vh;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
   width: 100%;
-  margin: auto;
-  margin-top: 5vh;
+  margin: 0 auto;
+  margin-top: clamp(1rem, 3vh, 3rem);
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .textIntroServicioSection {
-  font-size: 2.5vh;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-style: italic;
-  margin-top: 5vh;
+  margin-top: clamp(1rem, 2vh, 2rem);
+  line-height: 1.6;
+  max-width: min(800px, 90%);
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Media queries */
+@media (min-width: 1200px) {
+  .servicios-container {
+    position: absolute;
+    top:0;
+    left:0;
+    margin-bottom: 100vh;
+    height: 100vh;
+  }
+
+  .texto {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 992px) {
+  .servicios-container {
+    height: clamp(260px, 40vh, 450px);
+  }
+
+  .texto {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicios-container {
+    height: clamp(240px, 35vh, 400px);
+  }
+
+  .texto {
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  .titleServicioSection {
+    margin-top: 1rem;
+  }
+
+  .textIntroServicioSection {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .servicios-container {
+    height: 60vh;
+  }
+
+  .texto {
+    padding: 0.8rem;
+    max-width: 95%;
+  }
+
+  .titleServicioSection {
+    margin-top: 0.8rem;
+  }
+
+  .textIntroServicioSection {
+    margin-top: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicios-container {
+    height: 60vh;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .background {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .texto {
+    padding: 0.6rem;
+    width: 100%;
+  }
+
+  .titleServicioSection {
+    margin-top: 0.6rem;
+  }
+
+  .textIntroServicioSection {
+    margin-top: 0.6rem;
+  }
 }

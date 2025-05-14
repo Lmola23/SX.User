@@ -1,5 +1,88 @@
 .containerServicioSection {
   background-color: white;
-  margin-top: 15%;
-
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  margin-top: 80px;
+  position: absolute;
 }
+
+.servicios-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Estilos para cada tarjeta de servicio */
+.servicios-list > div {
+  flex: 1 1 300px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Media queries */
+@media screen and (max-width: 480px) {
+  .containerServicioSection {
+    margin-top: 60px;
+  }
+  
+  .servicios-list {
+    gap: 15px;
+  }
+  
+  .servicios-list > div {
+    flex: 1 1 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .containerServicioSection {
+    margin-top: 70px;
+  }
+  
+  .servicios-list > div {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .servicios-list > div {
+    flex: 1 1 300px;
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .containerServicioSection {
+    margin-top: 90px;
+  }
+  
+  .servicios-list {
+    gap: 25px;
+  }
+  
+  .servicios-list > div {
+    flex: 1 1 320px;
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  
+  .servicios-list {
+    gap: 30px;
+    margin-top: 50%;
+  }
+  
+  .servicios-list > div {
+    flex: 1 1 350px;
+    max-width: 350px;
+  }
+}
+

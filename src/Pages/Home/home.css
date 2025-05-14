@@ -1,7 +1,6 @@
 /* Estilos generales */
 .containerPresen {
   background: linear-gradient(to bottom, #FFB6C1 10%, #FFD6DA 40%, #FFF 90%);
-
   width: 100%;
   height: auto;
   padding-bottom: 15vw;
@@ -18,8 +17,7 @@
 }
 
 .titleHome {
-  /* Título principal: tamaño mínimo 2rem, ideal basado en 4vw, máximo 4rem */
-  font-size:11vw;
+  font-size: 11vw;
   width: 100%;
   text-align: center;
   color: #333333;
@@ -30,16 +28,14 @@
 }
 
 .textDescripcionInicialHome {
-  /* Descripción: tamaño mínimo 1rem, ideal 3vw, máximo 2rem */
   color: #333333;
   margin: auto;
   width: 60%;
   text-align: center;
-  font-size: 4vw;
+  font-size: 6vw;
   margin-top: 5%;
   margin-bottom: 10vw;
   text-shadow: 1px 1px 3px lightgray, 0 0 2px gray;
-  font-size: 6vw;
 }
 
 .containerButtonInicialHome {
@@ -52,12 +48,49 @@
   font-size: 2vw;
 }
 
-.buttonIncialHome {
-  /* Botón inicial: tamaño mínimo 1rem, ideal 3vw, máximo 1.5rem */
+.btnGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.btnCommon {
+  font-family: "Comorant", sans-serif;
+  font-style: italic;
+  padding: 10px 20px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size:2vw;
-  color: white;
-  padding: 6%;
+  color: #fff;
+  margin: 0 5px;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  font-size: 3.5vw;
+  transition: all 0.3s ease;
+}
+
+.btnConocer {
+  background-color: transparent;
+  border: solid 2px #ec7063;
+  color: #ec7063;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.btnCrear {
+  background-color: transparent;
+  border: solid 2px #28a739;
+  color: #28a739;
+  font-weight: 800;
+}
+
+.btnIniciar {
+  background-color: transparent;
+  border: solid 2px #ec7063;
+  color: #ec7063;
+  font-weight: 800;
 }
 
 /* Estilos de Escogernos */
@@ -68,10 +101,13 @@
   text-align: center;
   margin: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   background: linear-gradient(to bottom, #FFFFFF 10%, #FFEAEA 50%, #FFFFFF 90%);
-
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .titleHomeEscogernos {
@@ -79,6 +115,7 @@
   font-size:5vh;
   padding: 10%;
   margin-top: 10%;
+  text-align: center;
 }
 
 .titleHomeServicios {
@@ -87,14 +124,23 @@
   margin-top: 10%;
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
 }
-
+.servicioDestacados{
+  background: linear-gradient(to bottom, #FFFFFF 10%, #FFB6C1 50%, #FFFFFF 90%);
+}
 .ContainerServicioDestacados {
-  background: linear-gradient(to bottom, #FFFFFF, #FFB6C1 100%);
+  
   width: 100%;
   height: auto;
   margin: 0;
   background-size: cover;
   background-repeat: no-repeat;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
+   padding: 0 1rem;
 }
 
 .containerButtonInicialHomeServicio {
@@ -129,7 +175,11 @@
 /* Estilos para Productos */
 .containerHomeProduct {
   background-color: white;
-  padding-bottom: 10vw;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .containerHomeProductImg {
@@ -137,78 +187,56 @@
   height: 40vh;
   margin: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .imgHomeProduct {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .titleHomeProduct {
   text-align: center;
-  font-size:8vw;
-  margin-bottom: 5vw;
-  margin-top: 3vh;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 2rem 0;
+  line-height: 1.2;
 }
 
 .descriptionHomeProduct {
-  width: 80%;
+  width: 90%;
   text-align: center;
-  margin: auto;
-  font-size: 5vw;
-  margin-bottom: 5vw;
+  margin: 0 auto 2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 1.6;
 }
 
 .containerHomeTestimonio {
   width: 100%;
   height: auto;
   background: linear-gradient(to bottom, #FFFFFF 10%, #FFB6C1 50%, #FFFFFF 90%);
-
-  
-}
-
-.btnCommon {
-  font-family: "Comorant", sans-serif;
-  font-style: italic;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #fff;
-  margin: 0 5px;
-  display: inline-block;
-  text-align: center;
-  width: auto;
-  font-size: 3.5vw;
-}
-
-.btnConocer {
-  background-color:transparent;
-  border:solid 2px #ec7063;
-  color: #ec7063;
-  font-weight: 800;
-  font-size: 1rem;
-}
-
-.btnCrear {
-  background-color:transparent;
-  border:solid 2px #28a739;
-  color: #28a739;
-  font-weight: 800;
-}
-
-.btnIniciar {
-  background-color:transparent;
-  border: solid 2px #ec7063;
-  color: #ec7063;
-  font-weight: 800;
-}
-
-.btnGroup {
+  padding: 4rem 1rem;
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  font-size: 1.2rem;
+  flex-direction: column;
+  align-items: center;
 }
+
+.titleHometestimonio {
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #333333;
+  line-height: 1.2;
+}
+
+/* Contenedor del carrusel de testimonios */
+.containerHomeTestimonio > div {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .containerHome {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -216,4 +244,136 @@
 
 .containerHome[data-loading="false"] {
   opacity: 1;
+}
+
+/* Media queries para la sección de presentación */
+@media screen and (min-width: 768px) {
+  .containerPresen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+  }
+
+  .titleHome {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    line-height: 1.2;
+  }
+
+  .textDescripcionInicialHome {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 800px;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    line-height: 1.6;
+  }
+
+  .containerButtonInicialHome {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+
+  .btnGroup {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btnCommon {
+    padding: 1rem 2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+
+  .btnCommon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .titleHomeServicios{
+    padding-bottom: 5%;
+  }
+  .containerHomeProduct {
+    flex-direction: row;
+    margin-bottom: 10%;
+  }
+  .servicioDestacados{
+    margin-bottom: 10%;
+  }
+  .containerHomeProductText{
+    width: 40%;
+    height: 70vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .containerButtonInicialHomeServicio{
+    width: 18vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+    
+  }
+  .containerButtonInicialHomeServicio a{
+    font-size: 1..5rem;
+  }
+  
+  .textDescripcionInicialHomeServicio{
+    margin-bottom: 5%;
+  }
+
+  .containerHomeProductImg {
+    width: 60%;
+    height: 70vh;
+  }
+  .imgHomeProduct{
+    width: 100%;
+    height: 100%;
+  }
+  .containerHomeProduct{
+    width: 100%;
+    height: 100%;
+  }
+
+  .containerHomeTestimonio {
+    padding: 6rem 2rem;
+  }
+
+  .titleHometestimonio {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .containerPresen {
+    padding: 6rem 4rem;
+    margin-top: 4%;
+  }
+
+  .titleHome {
+    font-size: clamp(3rem, 6vw, 5rem);
+  }
+
+  .textDescripcionInicialHome {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  }
+
+  .containerHomeTestimonio {
+    padding: 8rem 4rem;
+  }
+
+  .containerHomeTestimonio > div {
+    padding: 0 2rem;
+  }
 }

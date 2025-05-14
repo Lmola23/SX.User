@@ -3,11 +3,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 12%;
     
 
 
 
+}
+@media screen and (min-width: 1024px) {
+    .perfilContainerPage {
+        margin-top: 3%;
+    }
 }
 .perfilContainerPage {
     opacity: 0;

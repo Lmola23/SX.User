@@ -70,14 +70,12 @@ export default function Home() {
           </div>
         </FadeInSection>
       </div>
-
-      <div className='containerEscogenos'>
-        <FadeInSection delay={0.6}>
+      <FadeInSection delay={0.6}>
           <h3 className='titleHomeEscogernos' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
             ¿Por qué escogernos?
           </h3>
         </FadeInSection>
-
+      <div className='containerEscogenos'>
         <FadeInSection delay={0.6}>
           <T_Nosotros_H
             Title="En Salón Xanadu"
@@ -118,14 +116,14 @@ export default function Home() {
           />
         </FadeInSection>
       </div>
-
-      <div className='ContainerServicioDestacados'>
-        <FadeInSection>
+      <div className='servicioDestacados'>
+      <FadeInSection>
           <h3 className='titleHomeServicios' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic", textAlign: "center" }}>
             Servicios Destacados
           </h3>
         </FadeInSection>
-
+      <div className='ContainerServicioDestacados'>
+      
         <FadeInSection delay={0.6}>
           <T_Servicio_H
             Title="Limpieza faciales profundas"
@@ -157,37 +155,36 @@ export default function Home() {
             imgUrl={Img.img9}
           />
         </FadeInSection>
-
-        <FadeInSection delay={0.6}>
+      </div>
+      <FadeInSection delay={0.6}>
           <p style={{ fontFamily: "Comorant" }} className='textDescripcionInicialHomeServicio'>
             Pero esto no es todo! En Salón Xanadu , tenemos una amplia gama de servicios diseñados para satisfacer todas tus necesidades de belleza y bienestar.
           </p>
         </FadeInSection>
-
         <div className='containerButtonInicialHomeServicio'>
           <Link className='buttonIncialHomeServicio' to='/services' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
-            Todos los Servicios ...
+            Todos los Servicios
           </Link>
         </div>
-
+        </div>
         <div className='containerHomeProduct'>
           <div className='containerHomeProductImg'>
             <img src={ImgProduct} className='imgHomeProduct' />
           </div>
-
-          <FadeInSection>
-            <h3 className='titleHomeProduct' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
-              Productos
+          <div className='containerHomeProductText'>
+            <FadeInSection>
+              <h3 className='titleHomeProduct' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+                Productos
             </h3>
             <p className='descriptionHomeProduct' style={{ fontFamily: "Comorant" }}>
               Sumérgete en un mundo de sensaciones con nuestros productos de belleza. Cada producto ha sido cuidadosamente seleccionado para brindarte resultados visibles y una experiencia única. ¡Explora nuestra tienda y encuentra tus nuevos favoritos!
             </p>
           </FadeInSection>
-
           <div className='containerButtonInicialHomeServicio'>
             <Link className='buttonIncialHomeServicio' to='/products' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
               Conocer Productos
             </Link>
+          </div>
           </div>
         </div>
 
@@ -203,7 +200,7 @@ export default function Home() {
           </FadeInSection>
         </div>
       </div>
-    </div>
+    
     </PageWrapper>
   );
 }

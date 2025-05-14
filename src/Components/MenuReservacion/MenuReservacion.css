@@ -1,27 +1,34 @@
 .containerMenuReservacion {
-  padding-bottom: 5vh;
+  padding: 2vh 0 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   align-items: center;
-
+  background: linear-gradient(to bottom, #fff5f5, #ffffff);
+  min-height: 100vh;
 }
 
 .appointment-container {  
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
-  width: 100%;
+  border-radius: 20px;
+  font-family: "Catamaran", sans-serif;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .appointment-header {
   text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #2d3436;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .time-selector,
@@ -41,73 +48,90 @@
 
 .butonTime {
   font-family: "Catamaran";
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid #ff5e57;
   cursor: pointer;
   background-color: white;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  color: #2d3436;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.butonTime:hover {
+  background-color: #ff5e57;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 94, 87, 0.2);
 }
 
 .buttonConfirmarCita {
-  background-color: red;
+  background: linear-gradient(45deg, #ff5e57, #ff8c8c);
   width: 80%;
   font-family: "Comorant";
   font-weight: 800;
-  font-style: italic;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: white;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 15px 30px;
+  border-radius: 15px;
   border: none;
-  margin: 20px auto;
+  margin: 30px auto;
   text-align: center;
   display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 94, 87, 0.3);
+}
+
+.buttonConfirmarCita:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 94, 87, 0.4);
 }
 
 .react-datepicker {
   border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .react-datepicker__header {
-  background-color: #ff5e57;
+  background: linear-gradient(45deg, #ff5e57, #ff8c8c);
   color: white;
-  border-radius: 10px 10px 0 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  margin: 0;
-  width: 100%;
 }
 
 .react-datepicker__day-names {
   display: flex;
   justify-content: space-around;
   font-weight: 600;
-  font-family: "Comorant";
-  font-style: italic;
-  font-size: 25px;
-  color: red;
+  font-family: "Catamaran";
+  font-size: 1.1rem;
+  color: #2d3436;
+  margin: 10px 0;
 }
 
 .react-datepicker__day {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 12px;
   transition: all 0.3s ease;
   font-weight: 500;
+  margin: 2px;
 }
 
 .react-datepicker__day:hover {
   background-color: #ff5e57;
   color: white;
+  transform: scale(1.1);
 }
 
 .react-datepicker__day--selected {
-  background-color: #ff5e57;
+  background: linear-gradient(45deg, #ff5e57, #ff8c8c);
   color: white;
   font-weight: 700;
+  transform: scale(1.1);
 }
 
 .react-datepicker__day--today {
@@ -152,15 +176,28 @@ h2.react-datepicker__current-month {
 }
 
 /* Media queries for responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .containerServicioReserva {
+    width: 80%;
+  }
+
   .buttonConfirmarCita {
-    width: 50%;
-    max-width: none;
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerServicioReserva {
+    width: 95%;
+  }
+
+  .buttonConfirmarCita {
+    width: 90%;
   }
 
   .butonTime {
-    font-size: 0.875rem;
-    padding: 6px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
   }
 
   .react-datepicker__day-names {
@@ -177,8 +214,16 @@ h2.react-datepicker__current-month {
 }
 
 @media (max-width: 480px) {
+  .containerServicioReserva {
+    width: 95%;
+  }
+
   .appointment-header {
-    font-size: 1.25rem;
+    font-size: 1.8rem;
+  }
+
+  .buttonConfirmarCita {
+    width: 90%;
   }
 
   .react-datepicker__header {
@@ -186,23 +231,139 @@ h2.react-datepicker__current-month {
   }
 
   .react-datepicker__day-names {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .react-datepicker__day {
-    padding: 6px;
+    padding: 8px;
+    font-size: 0.9rem;
   }
 
   h2.react-datepicker__current-month {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  .butonTime {
+    padding: 10px 15px;
+    font-size: 0.9rem;
   }
 }
-.containerServicioReserva{
-width: 60%;
-margin: auto;
-display: flex;
-align-items: center;
-justify-content: center;
+
+/* Nuevas media queries para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .containerServicioReserva {
+    width: 100%;
+  }
+
+  .buttonConfirmarCita {
+    width: 95%;
+    font-size: 0.875rem;
+  }
+
+  .react-datepicker__day {
+    padding: 4px;
+    font-size: 12px;
+  }
+
+  .react-datepicker__day-names {
+    font-size: 14px;
+  }
+}
+
+/* Media query para pantallas grandes */
+@media (min-width: 1440px) {
+  .containerServicioReserva {
+    width: 50%;
+  }
+
+  .buttonConfirmarCita {
+    width: 40%;
+  }
+
+  .butonTime {
+    font-size: 1.125rem;
+    padding: 10px;
+  }
+}
+
+.containerServicioReserva {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Estilos para los botones de servicios */
+.containerServicioReserva button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 2px solid #ff5e57;
+  background: white;
+  color: #2d3436;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.containerServicioReserva button:hover {
+  background: #ff5e57;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 94, 87, 0.2);
+}
+
+.containerServicioReserva button.selected {
+  background: linear-gradient(45deg, #ff5e57, #ff8c8c);
+  color: white;
+  border-color: #ff5e57;
+}
+
+/* Estilos para el mensaje de cita pendiente */
+.cita-pendiente-container {
+  text-align: center;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.cita-pendiente-container img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cita-pendiente-container p {
+  font-size: 1.2rem;
+  color: #2d3436;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.whatsapp-button {
+  padding: 12px 30px;
+  border-radius: 12px;
+  background: transparent;
+  border: 2px solid #25D366;
+  color: #25D366;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(37, 211, 102, 0.1);
+}
+
+.whatsapp-button:hover {
+  background: #25D366;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.2);
 }
 
 
