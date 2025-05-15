@@ -3,7 +3,7 @@ import './../../../Style/fonts.css';
 export default function T_Nosostro_H({ imgUrl, Title, description }) {
   return (
     <div className='container' style={{ fontFamily: "Comorant" }}>
-      <div className='containerImg'>
+      <div className='containerImgServicio'>
         <img src={imgUrl} alt="" />
       </div>
       <div className='containerDescrip'>
