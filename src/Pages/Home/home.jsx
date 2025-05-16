@@ -41,7 +41,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
     "name": "Salón Xanadu",
-    "image": "https://salonxanadu.com/logo.jpg",
+    "image": "http://salonxanadu.com/logo.jpg",
     "description": "Salón de belleza y estética en Las Tunas, Cuba. Especialistas en tratamientos faciales, cuidado corporal y de la piel.",
     "address": {
       "@type": "PostalAddress",
@@ -107,8 +107,7 @@ export default function Home() {
             "description": "Eliminamos impurezas, revitalizamos tu piel y te dejamos con un rostro radiante y saludable.",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "Salón Xanadu",
-              "url": "https://salonxanadu.com"
+              "name": "Salón Xanadu"
             }
           }
         },
@@ -120,8 +119,7 @@ export default function Home() {
             "description": "Transformar tu mirada nunca fue tan fácil. Look espectacular y natural.",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "Salón Xanadu",
-              "url": "https://salonxanadu.com"
+              "name": "Salón Xanadu"
             }
           }
         },
@@ -133,8 +131,7 @@ export default function Home() {
             "description": "Técnica avanzada de micropigmentación para un look impecable y duradero.",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "Salón Xanadu",
-              "url": "https://salonxanadu.com"
+              "name": "Salón Xanadu"
             }
           }
         },
@@ -146,8 +143,7 @@ export default function Home() {
             "description": "Tratamiento de blanqueamiento dental seguro y efectivo.",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "Salón Xanadu",
-              "url": "https://salonxanadu.com"
+              "name": "Salón Xanadu"
             }
           }
         }
@@ -183,14 +179,11 @@ export default function Home() {
       >
         <div className='containerPresen'>
           <FadeInSection>
-            <h1 className='titleHome' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+            <h2 className='titleHome' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
               Salón Xanadu Estética Facial y Corporal
-            </h1>
+            </h2>
             <p className='textDescripcionInicialHome'>
-              En nuestro salón de belleza y estética en Las Tunas, Cuba, cada cliente es nuestra estrella. Realzamos tu belleza única con tratamientos exclusivos y atención personalizada. Somos especialistas en tratamientos faciales, limpieza facial profunda, extensiones de pestañas y micropigmentación. Nuestro equipo de profesionales altamente capacitados está comprometido con tu belleza y bienestar.
-            </p>
-            <p className='textDescripcionInicialHome'>
-              Descubre nuestra amplia gama de servicios de belleza y estética, diseñados para realzar tu belleza natural y proporcionarte una experiencia única. Desde tratamientos faciales hasta cuidado corporal, cada servicio está pensado para brindarte los mejores resultados.
+              En nuestro salón , cada cliente es nuestra estrella. Realzamos tu belleza única con tratamientos exclusivos y atención personalizada.
             </p>
             <div className='containerButtonInicialHome'>
               {isAuthenticated ? (
@@ -210,21 +203,16 @@ export default function Home() {
             </div>
           </FadeInSection>
         </div>
-
         <FadeInSection delay={0.6}>
-          <h2 className='titleHomeEscogernos' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
-            ¿Por qué escogernos?
-          </h2>
-          <p className='textDescripcionInicialHome'>
-            En Salón Xanadu nos destacamos por nuestra excelencia en tratamientos faciales y corporales. Nuestro compromiso con la calidad y la satisfacción del cliente nos ha convertido en el salón de belleza preferido en Las Tunas, Cuba.
-          </p>
-        </FadeInSection>
-
+            <h3 className='titleHomeEscogernos' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+              ¿Por qué escogernos?
+            </h3>
+          </FadeInSection>
         <div className='containerEscogenos'>
           <FadeInSection delay={0.6}>
             <T_Nosotros_H
               Title="En Salón Xanadu"
-              description="Ofrecemos un cuidado integral y personalizado. Aquí encontrarás tratamientos corporales y faciales de última generación, un entorno acogedor y un equipamiento moderno. Nuestros especialistas están altamente capacitados en las últimas técnicas de belleza y estética. <Link to='/services'>Descubre nuestros servicios</Link>."
+              description="Ofrecemos un cuidado integral y personalizado. Aquí encontrarás tratamientos corporales y faciales de última generación, un entorno acogedor y un equipamiento moderno."
               imgUrl={Img.img1}
             />
           </FadeInSection>
@@ -232,7 +220,7 @@ export default function Home() {
           <FadeInSection delay={0.6}>
             <T_Nosotros_H
               Title="Atención Personalizada"
-              description="Cada cliente es único y merece una atención especial. Nuestro equipo de expertos te brindará una atención personalizada, adaptando cada tratamiento a tus necesidades específicas. Desde la limpieza facial hasta la micropigmentación, cada servicio está diseñado pensando en ti. <Link to='/booking'>Reserva tu cita</Link>."
+              description="Cada cliente es único. Nuestro equipo de expertos te brindará una atención personalizada, adaptando cada tratamiento a tus necesidades específicas."
               imgUrl={Img.img2}
             />
           </FadeInSection>
@@ -240,7 +228,7 @@ export default function Home() {
           <FadeInSection delay={0.6}>
             <T_Nosotros_H
               Title="Productos exclusivos"
-              description="No solo te ofrecemos tratamientos de primera calidad, sino también una selección de productos exclusivos para que puedas llevar el cuidado personal y la belleza a casa. Nuestros productos están diseñados para complementar tus tratamientos y ayudarte a mantener los resultados espectaculares. <Link to='/products'>Explora nuestros productos</Link>."
+              description="No solo te ofrecemos tratamientos de primera calidad, sino también una selección de productos exclusivos para que puedas llevar el cuidado personal y la belleza a casa. Nuestros productos están diseñados para complementar tus tratamientos y ayudarte a mantener los resultados espectaculares."
               imgUrl={Img.img3}
             />
           </FadeInSection>
@@ -248,7 +236,7 @@ export default function Home() {
           <FadeInSection delay={0.6}>
             <T_Nosotros_H
               Title="Explora Nuestro Blog de Cuidado de la piel y Bienestar personal!"
-              description="Creemos que el cuidado va más allá de un tratamiento. Nuestro blog está diseñado para compartir contigo los mejores consejos, tendencias y secretos del mundo de la estética facial y corporal. Mantente informado sobre las últimas novedades en belleza y bienestar."
+              description="Creemos que el cuidado va más allá de un tratamiento. Nuestro blog está diseñado para compartir contigo los mejores consejos, tendencias y secretos del mundo de la estetica facial y corporal."
               imgUrl={Img.img4}
             />
           </FadeInSection>
@@ -256,55 +244,52 @@ export default function Home() {
           <FadeInSection delay={0.6}>
             <T_Nosotros_H
               Title="Ofertas y Promociones Exclusivas!"
-              description="Te consentimos con nuestras ofertas y promociones especiales diseñadas para realzar tu belleza sin vaciar tu bolsillo. ¡Descubre las increíbles oportunidades que tenemos para ti! Suscríbete a nuestro boletín para recibir las mejores ofertas."
+              description="Te consentimos con nuestras ofertas y promociones especiales diseñadas para realzar tu belleza sin vaciar tu bolsillo. ¡Descubre las increíbles oportunidades que tenemos para ti!"
               imgUrl={Img.img5}
             />
           </FadeInSection>
         </div>
-
         <div className='servicioDestacados'>
-          <FadeInSection>
-            <h2 className='titleHomeServicios' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic", textAlign: "center" }}>
+        <FadeInSection>
+            <h3 className='titleHomeServicios' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic", textAlign: "center" }}>
               Servicios Destacados
-            </h2>
-            <p className='textDescripcionInicialHome'>
-              Descubre nuestros servicios más populares, diseñados para realzar tu belleza natural y proporcionarte una experiencia única. Cada tratamiento está realizado por profesionales altamente capacitados.
-            </p>
+            </h3>
           </FadeInSection>
-          <div className='ContainerServicioDestacados'>
-            <FadeInSection delay={0.6}>
-              <T_Servicio_H
-                Title="Limpieza faciales profundas"
-                description="Eliminamos impurezas, revitalizamos tu piel y te dejamos con un rostro radiante y saludable. Cada limpieza se adaptan a las necesidades específicas de tu piel, utilizando productos y técnicas personalizadas para garantizar los mejores resultados."
-                imgUrl={Img.img6}
-              />
-            </FadeInSection>
-
-            <FadeInSection delay={0.6}>
-              <T_Servicio_H
-                Title="Extensiones de Pestañas"
-                description="Transformar tu mirada nunca fue tan fácil. Con nuestras extensiones de pestañas, tendrás un look espectacular y natural, diseñado especialmente para realzar la belleza de tus ojos."
-                imgUrl={Img.img7}
-              />
-            </FadeInSection>
-
-            <FadeInSection delay={0.6}>
-              <T_Servicio_H
-                Title="Micropigmentación de Cejas y Labios"
-                description="Descubre el secreto para unas cejas perfectamente definidas y unos labios siempre radiantes. Nuestra técnica avanzada de micropigmentación te proporciona un look impecable y duradero, realzando tu belleza natural de manera sutil y sofisticada."
-                imgUrl={Img.img8}
-              />
-            </FadeInSection>
-
-            <FadeInSection delay={0.6}>
-              <T_Servicio_H
-                Title="Blanqueamiento Dental Profesional"
-                description="Sueñas con una sonrisa más blanca y brillante? te ofrecemos un tratamiento de blanqueamiento dental seguro y efectivo, diseñado para devolverte la confianza y hacerte sonreír con orgullo."
-                imgUrl={Img.img9}
-              />
-            </FadeInSection>
-          </div>
+        <div className='ContainerServicioDestacados'>
+        
           <FadeInSection delay={0.6}>
+            <T_Servicio_H
+              Title="Limpieza faciales profundas"
+              description="Eliminamos impurezas, revitalizamos tu piel y te dejamos con un rostro radiante y saludable. Cada limpieza se adaptan a las necesidades específicas de tu piel, utilizando productos y técnicas personalizadas para garantizar los mejores resultados."
+              imgUrl={Img.img6}
+            />
+          </FadeInSection>
+
+          <FadeInSection delay={0.6}>
+            <T_Servicio_H
+              Title="Extensiones de Pestañas"
+              description="Transformar tu mirada nunca fue tan fácil. Con nuestras extensiones de pestañas, tendrás un look espectacular y natural, diseñado especialmente para realzar la belleza de tus ojos."
+              imgUrl={Img.img7}
+            />
+          </FadeInSection>
+
+          <FadeInSection delay={0.6}>
+            <T_Servicio_H
+              Title="Micropigmentación de Cejas y Labios"
+              description="Descubre el secreto para unas cejas perfectamente definidas y unos labios siempre radiantes. Nuestra técnica avanzada de micropigmentación te proporciona un look impecable y duradero, realzando tu belleza natural de manera sutil y sofisticada."
+              imgUrl={Img.img8}
+            />
+          </FadeInSection>
+
+          <FadeInSection delay={0.6}>
+            <T_Servicio_H
+              Title="Blanqueamiento Dental Profesional"
+              description="Sueñas con una sonrisa más blanca y brillante? te ofrecemos un tratamiento de blanqueamiento dental seguro y efectivo, diseñado para devolverte la confianza y hacerte sonreír con orgullo."
+              imgUrl={Img.img9}
+            />
+          </FadeInSection>
+        </div>
+        <FadeInSection delay={0.6}>
             <p style={{ fontFamily: "Comorant" }} className='textDescripcionInicialHomeServicio'>
               Pero esto no es todo! En Salón Xanadu , tenemos una amplia gama de servicios diseñados para satisfacer todas tus necesidades de belleza y bienestar.
             </p>
@@ -314,47 +299,49 @@ export default function Home() {
               Todos los Servicios
             </Link>
           </div>
-        </div>
-        <div className='containerHomeProduct'>
-          <div className='containerHomeProductImg'>
-            <img 
-              src={ImgProduct} 
-              className='imgHomeProduct' 
-              alt="Productos de belleza Salón Xanadu"
-              width="600"
-              height="400"
-              loading="lazy"
-            />
           </div>
-          <div className='containerHomeProductText'>
-            <FadeInSection>
-              <h3 className='titleHomeProduct' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
-                Productos
-            </h3>
-            <p className='descriptionHomeProduct' style={{ fontFamily: "Comorant" }}>
-              Sumérgete en un mundo de sensaciones con nuestros productos de belleza. Cada producto ha sido cuidadosamente seleccionado para brindarte resultados visibles y una experiencia única. ¡Explora nuestra tienda y encuentra tus nuevos favoritos!
-            </p>
-          </FadeInSection>
-          <div className='containerButtonInicialHomeServicio'>
-            <Link className='buttonIncialHomeServicio' to='/products' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
-              Conocer Productos
-            </Link>
+          <div className='containerHomeProduct'>
+            <div className='containerHomeProductImg'>
+              <img 
+                src={ImgProduct} 
+                className='imgHomeProduct' 
+                alt="Productos de belleza Salón Xanadu"
+                width="600"
+                height="400"
+                loading="lazy"
+              />
+            </div>
+            <div className='containerHomeProductText'>
+              <FadeInSection>
+                <h3 className='titleHomeProduct' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+                  Productos
+              </h3>
+              <p className='descriptionHomeProduct' style={{ fontFamily: "Comorant" }}>
+                Sumérgete en un mundo de sensaciones con nuestros productos de belleza. Cada producto ha sido cuidadosamente seleccionado para brindarte resultados visibles y una experiencia única. ¡Explora nuestra tienda y encuentra tus nuevos favoritos!
+              </p>
+            </FadeInSection>
+            <div className='containerButtonInicialHomeServicio'>
+              <Link className='buttonIncialHomeServicio' to='/products' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
+                Conocer Productos
+              </Link>
+            </div>
+            </div>
           </div>
-          </div>
-        </div>
 
-        <div className='containerHomeTestimonio'>
-          <FadeInSection delay={0.6}>
-            <h3 className='titleHometestimonio' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic",textAlign:"center" }}>
-              Testimonios
-            </h3>
-          </FadeInSection>
+          <div className='containerHomeTestimonio'>
+            <FadeInSection delay={0.6}>
+              <h3 className='titleHometestimonio' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic",textAlign:"center" }}>
+                Testimonios
+              </h3>
+            </FadeInSection>
 
-          <FadeInSection delay={0.6}>
-            <Test_Carusel />
-          </FadeInSection>
+            <FadeInSection delay={0.6}>
+              <Test_Carusel />
+            </FadeInSection>
+          </div>
         </div>
-      </div>
+      
+    
     </PageWrapper>
     </>
   );
