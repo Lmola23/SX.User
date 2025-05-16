@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bunx --bun vite",
-    "build": "bunx --bun vite build",
+    "build": "vite build",
     "lint": "bunx --bun eslint .",
     "preview": "bunx --bun vite preview",
     "predeploy": "bun run build",
@@ -40,7 +40,8 @@
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "rollup": "^4.9.0"
   },
   "homepage": "https://salonxanadu.com/"
 }
