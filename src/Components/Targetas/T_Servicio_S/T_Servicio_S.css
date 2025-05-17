@@ -108,13 +108,13 @@
 }
 
 .content-title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 0.3rem;
   text-shadow: var(--text-shadow);
 }
 
 .description {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-bottom: 0.4rem;
   font-family: var(--font-primary);
   line-height: 1.2;
@@ -123,7 +123,7 @@
 }
 
 .price {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--accent-color);
   text-shadow: var(--text-shadow);
@@ -212,7 +212,7 @@
 .benefit-item {
   margin-bottom: 0.4rem;
   line-height: 1.4;
-  font-size: 0.75rem;
+  font-size: 1rem;
   text-align: left;
   text-shadow: var(--text-shadow);
 }
