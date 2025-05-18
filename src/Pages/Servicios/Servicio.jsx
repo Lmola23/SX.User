@@ -16,7 +16,7 @@ const getServicesFromAPI = async () => {
       Img: service.urlImg,
       Incluye: service.incluye,
       price: service.precio,
-      Beneficios: service.beneficios.split(',').map(b => b.trim()),
+      Beneficios: service.beneficios ? service.beneficios.split(',').map(b => b.trim()) : [],
       ImgBeneficio: service.urlImgBeneficio
     }));
   } catch (error) {
