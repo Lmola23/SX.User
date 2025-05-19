@@ -261,11 +261,6 @@ export default function Home() {
               imgUrl={Img.img8}
             />
 
-            <T_Servicio_H
-              Title="Blanqueamiento Dental Profesional"
-              description="Sueñas con una sonrisa más blanca y brillante? te ofrecemos un tratamiento de blanqueamiento dental seguro y efectivo, diseñado para devolverte la confianza y hacerte sonreír con orgullo."
-              imgUrl={Img.img9}
-            />
         </div>
             <p style={{ fontFamily: "Comorant" }} className='textDescripcionInicialHomeServicio'>
               Pero esto no es todo! En Salón Xanadu , tenemos una amplia gama de servicios diseñados para satisfacer todas tus necesidades de belleza y bienestar.
