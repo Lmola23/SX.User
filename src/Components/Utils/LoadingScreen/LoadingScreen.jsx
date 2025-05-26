@@ -6,29 +6,32 @@ const LoadingScreen = ({ onLoadingComplete }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const checkResources = async () => {
+        const waitForLoad = async () => {
             try {
-                // Espera a que se cargue completamente el documento (HTML, estilos, imágenes, etc.)
-                await new Promise(resolve => {
+                // Espera a que se cargue el DOM, recursos (CSS, imágenes) y fuentes
+                const fontsReady = document.fonts?.ready || Promise.resolve();
+                const windowLoad = new Promise(resolve => {
                     if (document.readyState === 'complete') {
                         resolve();
                     } else {
-                        window.addEventListener('load', resolve);
+                        window.addEventListener('load', resolve, { once: true });
                     }
                 });
+
+                // Esperar a que todo esté listo
+                await Promise.all([fontsReady, windowLoad]);
 
                 setIsLoading(false);
                 if (onLoadingComplete) onLoadingComplete();
             } catch (error) {
-                console.error("Error durante la carga:", error);
-                setIsLoading(false);
+                console.error("Error durante la carga completa de recursos:", error);
+                setIsLoading(false); // En caso de error, eliminar la pantalla de carga
             }
         };
 
-        checkResources();
+        waitForLoad();
     }, [onLoadingComplete]);
 
-    // Mientras isLoading es true, muestra solo la pantalla de carga
     if (!isLoading) return null;
 
     return (
