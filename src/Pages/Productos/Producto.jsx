@@ -13,7 +13,7 @@ const getProductsFromAPI = async () => {
       id: product.id,
       name: product.title,
       price: product.precio,
-      image: product.urlImg, // Se utiliza directamente la URL externa
+      image: product.urlImg,
       description: product.detalle,
       cantidadStock:product.cantidadStock,
       beneficio: product.beneficio.split(',').map(b => b.trim())
@@ -32,25 +32,22 @@ export default function Producto() {
   useEffect(() => {
     const loadContent = async () => {
       try {
-        // Cargar productos
         const productsFromAPI = await getProductsFromAPI();
         setProducts(productsFromAPI);
 
-        // Precargar imagen inicial
         await new Promise((resolve) => {
           const img = new Image();
           img.src = ImgInicial;
           img.onload = resolve;
         });
 
-        // Precargar imágenes de productos
         await Promise.all(
           productsFromAPI.map((product) => {
             return new Promise((resolve) => {
               const img = new Image();
               img.src = product.image;
               img.onload = resolve;
-              img.onerror = resolve; // Manejar errores de carga
+              img.onerror = resolve;
             });
           })
         );

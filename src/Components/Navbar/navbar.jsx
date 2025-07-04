@@ -70,6 +70,9 @@ const Navbar = () => {
           <Link className={`item ${location.pathname === "/booking" ? "active" : ""}`} to="/booking" onClick={closeMenu}>
             Reservaciones
           </Link>
+           <Link className={`item ${location.pathname === "/gallery" ? "active" : ""}`} to="/gallery" onClick={closeMenu}>
+            Galeria
+          </Link>
           {isAuthenticated ? (
             <>
               <Link className={`item ${location.pathname === "/perfil" ? "active" : ""}`} to="/perfil" onClick={closeMenu}>

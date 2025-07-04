@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Suspense , lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import Navbar from "./Components/Navbar/navbar.jsx";
 import { AuthProvider } from './Components/Utils/AuthProvider/AuthProvider.jsx';
 import { ProtectedRoute, ScrollToTop } from './Components/Utils/index.js';
@@ -16,6 +16,7 @@ const Reservacion = lazy(() => import('./Pages/Reservaciones/Reservacion.jsx'));
 const Perfil = lazy(() => import('./Pages/Perfil/Perfil.jsx'));
 const Login = lazy(() => import('./Components/Account/Login/Login.jsx'));
 const Register = lazy(() => import('./Components/Account/Register/Register.jsx'));
+const Galeria = lazy(() => import('./Pages/Galeria/Galeria.jsx'));
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Servicio />} />
               <Route path="/products" element={<Producto />} />
+              <Route path="/gallery" element={<Galeria />} />
               <Route path="/booking" element={
                 <ProtectedRoute>
                   <Reservacion />

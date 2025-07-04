@@ -11,7 +11,7 @@ export default function SectioniIntro({ title, textIntro, ImgIntro }) {
 
   return (
     <div className="servicios-container" style={{ fontFamily: "Comorant" }} >
-      < div className="background" style={{ backgroundImage: `url(${ImgIntro})`, backgroundSize: "cover" }}></div>
+      <div className="background" style={{ backgroundImage: `url(${ImgIntro})`, backgroundSize: "cover" }}></div>
 
       {/* Contenido con animación */}
       <div className={`texto ${isVisible ? "visible" : ""}`} >
@@ -20,7 +20,7 @@ export default function SectioniIntro({ title, textIntro, ImgIntro }) {
           {textIntro}
         </p>
       </div>
-    </div >
+    </div>
   );
 }
 
