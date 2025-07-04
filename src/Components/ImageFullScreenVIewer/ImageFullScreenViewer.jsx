@@ -35,7 +35,15 @@ export default function ImageFullScreenViewer({ imageUrl, alt = "Imagen" }) {
             <motion.img
               src={imageUrl}
               alt={alt}
-              className="fullscreen-image"
+              style={{
+                maxWidth: "100vw",
+                maxHeight: "100vh",
+                width: "auto",
+                height: "auto",
+                objectFit: "contain",
+                display: "block",
+                margin: "auto"
+              }}
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
