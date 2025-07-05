@@ -7,9 +7,8 @@ import Footer from './Components/Footer/footer.jsx';
 import { requestNotificationPermission, onMessageListener } from "./firebaseconf.js";
 import { useEffect } from "react";
 import LoadingScreen from './Components/Utils/LoadingScreen/LoadingScreen';
-
+import Home from "./Pages/Home/home.jsx";
 // Importa los componentes de forma lazy
-const Home = lazy(() => import('./Pages/Home/home.jsx'));
 const Servicio = lazy(() => import('./Pages/Servicios/Servicio.jsx'));
 const Producto = lazy(() => import('./Pages/Productos/Producto.jsx'));
 const Reservacion = lazy(() => import('./Pages/Reservaciones/Reservacion.jsx'));

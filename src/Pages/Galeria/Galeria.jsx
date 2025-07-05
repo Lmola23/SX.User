@@ -45,12 +45,12 @@ export default function Galeria() {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "16px",
+            gap:"15px",
             justifyContent: "center",
           }}
         >
           {fotos.map((foto) => (
-            <div key={foto.id} style={{ flex: "0 1 200px" }}>
+            <div key={foto.id} style={{ flex: "0 1 400px" }}>
               <ImageFullScreenViewer imageUrl={foto.urlImg} alt={`Imagen ${foto.id}`} />
             </div>
           ))}
