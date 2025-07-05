@@ -2,6 +2,8 @@ import ImageFullScreenViewer from "../../Components/ImageFullScreenVIewer/ImageF
 import React, { useEffect, useState } from "react";
 import { SectionIntro } from "../../Components/Utils/index.js";
 import ImgInicial from "../../assets/Galeria/fondo.png";
+import "./Galeria.css"; // Asegúrate de tener los estilos
+
 const getFotosFromApi = async () => {
   try {
     const response = await fetch('https://luismola-001-site3.qtempurl.com/api/ImgGaleria');
@@ -16,9 +18,6 @@ const getFotosFromApi = async () => {
     return [];
   }
 }
-
-
-
 
 export default function Galeria() {
   const [fotos, setFotos] = useState([]);
@@ -40,23 +39,14 @@ export default function Galeria() {
       />
       <div className="galeria-container">
         <h1 style={{ fontSize: "5vw", textAlign: "center" }}> Galería de Imágenes</h1>
-        <div
-          className="galeria-flex"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap:"15px",
-            justifyContent: "center",
-          }}
-        >
+        <div className="galeria-flex">
           {fotos.map((foto) => (
-            <div key={foto.id} style={{ flex: "0 1 400px" }}>
+            <div key={foto.id} className="galeria-item">
               <ImageFullScreenViewer imageUrl={foto.urlImg} alt={`Imagen ${foto.id}`} />
             </div>
           ))}
         </div>
       </div>
     </>
-
   );
 }
