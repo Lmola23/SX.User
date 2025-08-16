@@ -46,7 +46,7 @@ const T_Producto_P = ({ products }) => {
             {selectedProduct && (
                 <div className="modal-overlay" style={{ fontFamily: "Comorant" }}>
                     <div className="modal-content">
-                        <button className="close-button" onClick={handleCloseModal}>✖</button>
+                        <button className="close-button" onClick={handleCloseModal} style={{fontSize:"2rem"}}>✖</button>
                         <div className="product-details">
                             <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />
                             <div className="details-text">
@@ -69,12 +69,15 @@ const T_Producto_P = ({ products }) => {
                             </div>
 
                         </div>
+                        <div style={{ display: "flex", justifyContent: "space-around", marginTop: "20px" }}>
+                            <button style={{backgroundColor:"#929292ff" , color:"white", padding:"3vw",border:"none",borderRadius:"15px", width:"30vw"}} onClick={handleCloseModal}>Volver</button>
                         <button
                             onClick={handleReserve}
-                            style={{ backgroundColor: "#60e264ff", color: "#ffffff", padding: "3vw", border: "none", borderRadius: "15px", marginLeft: "70%",fontSize:"1rem" }}
+                            style={{ backgroundColor: "#60e264ff", color: "#ffffff", padding: "3vw", border: "none", borderRadius: "15px",fontSize:"1rem" ,width:"30vw" }}
                         >
                             Comprar 
                         </button>
+                        </div>
                     </div>
 
                 </div>
