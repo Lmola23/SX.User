@@ -9,7 +9,7 @@ const ServicioCard = ({ servicio }) => {
 
   const handleReserve = () => {
     // URL personalizada de WhatsApp con el servicio específico
-    const whatsappURL = `https://wa.me/+535589090?text=Hola%20quiero%20reservar%20una%20cita%20para%20${encodeURIComponent(Title)}`;
+    const whatsappURL = `https://wa.me/+5355890908?text=Hola%20quiero%20reservar%20una%20cita%20para%20${encodeURIComponent(Title)}`;
     window.open(whatsappURL, '_blank');
   };
 
