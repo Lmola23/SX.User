@@ -69,7 +69,7 @@ const T_Producto_P = ({ products }) => {
                         </div>
                         <button
                             onClick={handleReserve}
-                            style={{ backgroundColor: "#60e264ff", color: "#ffffff", padding: "3vw", border: "none", borderRadius: "15px", marginLeft: "50%" }}
+                            style={{ backgroundColor: "#60e264ff", color: "#ffffff", padding: "3vw", border: "none", borderRadius: "15px", marginLeft: "70%",fontSize:"1rem" }}
                         >
                             Comprar 
                         </button>
