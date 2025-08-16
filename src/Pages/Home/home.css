@@ -8,12 +8,19 @@
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
+  min-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
 }
-
+*{
+  font-family: "Cormorant", sans-serif;
+}
 .containerHome {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  height: auto;
+  opacity: 1; /* Hacer visible por defecto */
+  transition: opacity 0.3s ease-in-out;
 }
 
 .titleHome {
@@ -57,7 +64,7 @@
 }
 
 .btnCommon {
-  font-family: "Comorant", sans-serif;
+  font-family: "Cormorant", sans-serif;
   font-style: italic;
   padding: 10px 20px;
   border-radius: 5px;
@@ -238,12 +245,8 @@
 }
 
 .containerHome {
-  opacity: 0;
+  opacity: 1; /* Hacer visible por defecto */
   transition: opacity 0.3s ease-in-out;
-}
-
-.containerHome[data-loading="false"] {
-  opacity: 1;
 }
 
 /* Media queries para la sección de presentación */

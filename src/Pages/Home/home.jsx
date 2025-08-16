@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import './home.css';
 import { Link } from "react-router-dom";
 import './../../Style/fonts.css';
@@ -7,35 +6,11 @@ import Img from './../../Utiles/imgHome.js';
 import ImgProduct from './../../assets/HomeImg/imgProductoHome.jpeg';
 import Test_Carusel from './../../Components/Test_Carusel/Test_Carusel.jsx';
 import { FadeInSection } from "../../Components/Utils/index.js";
-import { useAuth } from './../../Components/Utils/AuthProvider/AuthProvider.jsx';
 import PageWrapper from '../../Components/Utils/PageWraper/PageWraper';
 import SEO from '../../Components/Utils/SEO/SEO';
 
 export default function Home() {
-  const { isAuthenticated } = useAuth();
-  const [isContentLoading, setIsContentLoading] = useState(true);
 
-  useEffect(() => {
-    // Simular carga de recursos
-    Promise.all([
-      // Precarga de imágenes principales
-      new Promise(resolve => {
-        const img = new Image();
-        img.src = ImgProduct;
-        img.onload = resolve;
-      }),
-      // Precarga de imágenes de servicios
-      ...Object.values(Img).map(imgSrc => 
-        new Promise(resolve => {
-          const img = new Image();
-          img.src = imgSrc;
-          img.onload = resolve;
-        })
-      )
-    ]).then(() => {
-      setIsContentLoading(false);
-    });
-  }, []);
 
   const schemaMarkup = {
     "@context": "https://schema.org",
@@ -174,36 +149,23 @@ export default function Home() {
       />
       <div 
         className='containerHome' 
-        style={{ fontFamily: "Comorant" }}
-        data-loading={isContentLoading}
       >
         <div className='containerPresen'>
           <FadeInSection>
-            <h2 className='titleHome' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+            <h2 className='titleHome'>
               Salón Xanadu Estética Facial y Corporal
             </h2>
             <p className='textDescripcionInicialHome'>
               En nuestro salón , cada cliente es nuestra estrella. Realzamos tu belleza única con tratamientos exclusivos y atención personalizada.
             </p>
             <div className='containerButtonInicialHome'>
-              {isAuthenticated ? (
                 <Link className='btnCommon btnConocer' to='/services'>
                   Conocer Servicios
                 </Link>
-              ) : (
-                <div className='btnGroup'>
-                  <Link className='btnCommon btnCrear' to='/register'>
-                    Crear Cuenta
-                  </Link>
-                  <Link className='btnCommon btnIniciar' to='/login'>
-                    Iniciar Sección
-                  </Link>
-                </div>
-              )}
             </div>
           </FadeInSection>
         </div>
-            <h3 className='titleHomeEscogernos' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+            <h3 className='titleHomeEscogernos' style={{ fontFamily: "Cormorant", fontWeight: 800, fontStyle: "italic" }}>
               ¿Por qué escogernos?
             </h3>
         <div className='containerEscogenos'>
@@ -238,7 +200,7 @@ export default function Home() {
             />
         </div>
         <div className='servicioDestacados'>
-            <h3 className='titleHomeServicios' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic", textAlign: "center" }}>
+            <h3 className='titleHomeServicios' style={{ fontFamily: "Cormorant", fontWeight: 800, fontStyle: "italic", textAlign: "center" }}>
               Servicios Destacados
             </h3>
         <div className='ContainerServicioDestacados'>
@@ -266,7 +228,7 @@ export default function Home() {
               Pero esto no es todo! En Salón Xanadu , tenemos una amplia gama de servicios diseñados para satisfacer todas tus necesidades de belleza y bienestar.
             </p>
           <div className='containerButtonInicialHomeServicio'>
-            <Link className='buttonIncialHomeServicio' to='/services' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
+            <Link className='buttonIncialHomeServicio' to='/services' style={{ fontFamily: "Cormorant", fontStyle: "italic" }}>
               Todos los Servicios
             </Link>
           </div>
@@ -283,14 +245,14 @@ export default function Home() {
               />
             </div>
             <div className='containerHomeProductText'>
-                <h3 className='titleHomeProduct' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic" }}>
+                <h3 className='titleHomeProduct' style={{ fontFamily: "Cormorant", fontWeight: 800, fontStyle: "italic" }}>
                   Productos
               </h3>
-              <p className='descriptionHomeProduct' style={{ fontFamily: "Comorant" }}>
+              <p className='descriptionHomeProduct' style={{ fontFamily: "Cormorant" }}>
                 Sumérgete en un mundo de sensaciones con nuestros productos de belleza. Cada producto ha sido cuidadosamente seleccionado para brindarte resultados visibles y una experiencia única. ¡Explora nuestra tienda y encuentra tus nuevos favoritos!
               </p>
             <div className='containerButtonInicialHomeServicio'>
-              <Link className='buttonIncialHomeServicio' to='/products' style={{ fontFamily: "Comorant", fontStyle: "italic" }}>
+              <Link className='buttonIncialHomeServicio' to='/products' style={{ fontFamily: "Cormorant", fontStyle: "italic" }}>
                 Conocer Productos
               </Link>
             </div>
@@ -298,7 +260,7 @@ export default function Home() {
           </div>
 
           <div className='containerHomeTestimonio'>
-              <h3 className='titleHometestimonio' style={{ fontFamily: "Comorant", fontWeight: 800, fontStyle: "italic",textAlign:"center" }}>
+              <h3 className='titleHometestimonio' style={{ fontFamily: "Cormorant", fontWeight: 800, fontStyle: "italic",textAlign:"center" }}>
                 Testimonios
               </h3>
 
@@ -306,7 +268,7 @@ export default function Home() {
           </div>
         </div>
       
-    
+   
     </PageWrapper>
     </>
   );

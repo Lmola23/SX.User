@@ -2,3 +2,6 @@ body {
   width: 100%;
   background-image: url('./assets/HomeImg/fondoServicio.png');
 }
+*{
+  font-family: "Cormorant", serif !important;
+}

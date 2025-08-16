@@ -29,7 +29,6 @@ export default function Galeria() {
     };
     fetchFotos();
   }, []);
-
   return (
     <>
       <SectionIntro

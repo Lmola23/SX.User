@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./T_Servicio_S.css";
 import "./../../../Style/fonts.css";
 
@@ -7,10 +6,11 @@ const ServicioCard = ({ servicio }) => {
   const { Title, Img, Incluye, price, Beneficios, ImgBeneficio } = servicio;
   const [hovered, setHovered] = useState(false);
   const [flipped, setFlipped] = useState(false);
-  const navigate = useNavigate();
 
   const handleReserve = () => {
-    navigate('/booking');
+    // URL personalizada de WhatsApp con el servicio específico
+    const whatsappURL = `https://wa.me/+535589090?text=Hola%20quiero%20reservar%20una%20cita%20para%20${encodeURIComponent(Title)}`;
+    window.open(whatsappURL, '_blank');
   };
 
   return (
@@ -18,7 +18,7 @@ const ServicioCard = ({ servicio }) => {
       className={`card-container ${flipped ? "flipped" : ""}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{fontFamily:"Comorant"}}
+      style={{fontFamily:"Cormorant"}}
     >
       {/* Front Card */}
       <div className="card front">
@@ -51,7 +51,7 @@ const ServicioCard = ({ servicio }) => {
                   className="reserve-button"
                   onClick={handleReserve}
                 >
-                  Reservá Online
+                  Reservar por WhatsApp
                 </button>
                 <button 
                   className="benefits-button"
