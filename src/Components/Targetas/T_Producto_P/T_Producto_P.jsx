@@ -51,8 +51,10 @@ const T_Producto_P = ({ products }) => {
                             <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />
                             <div className="details-text">
                                 <h2 style={{ fontStyle: "italic" }}>{selectedProduct.name}</h2>
-                                <p translate="no" className="priceProduct">{selectedProduct.price}$</p>
+                                <p translate="no" style={{fontSize:"1.2rem"}} className="priceProduct">{selectedProduct.price}$</p>
+                                 <h3 style={{textAlign:"center"}}>Descripciòn:</h3>
                                 <p>{selectedProduct.description}</p>
+                                <h3 style={{textAlign:"center"}}>Beneficios:</h3>
                                 {Array.isArray(selectedProduct.beneficio) ? (
                                     <ul>
                                         {selectedProduct.beneficio.map((item, index) => (
