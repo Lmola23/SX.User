@@ -16,7 +16,7 @@ const getProductsFromAPI = async () => {
       image: product.urlImg,
       description: product.detalle,
       cantidadStock:product.cantidadStock,
-      beneficio: product.beneficio.split(',').map(b => b.trim())
+      beneficio: product.beneficio.split('.').map(b => b.trim())
     }));
     return productsResolved;
   } catch (error) {
