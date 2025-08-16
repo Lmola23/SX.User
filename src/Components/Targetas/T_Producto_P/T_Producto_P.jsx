@@ -8,7 +8,7 @@ const T_Producto_P = ({ products }) => {
 
     const handleReserve = () => {
         // URL personalizada de WhatsApp con el servicio específico
-        const whatsappURL = `https://wa.me/+5355890908?text=Hola%20quiero%20reservar%20el%20producto%20${encodeURIComponent(products.name)}`;
+        const whatsappURL = `https://wa.me/+5355890908?text=Hola%20quiero%20reservar%20el%20producto%20${encodeURIComponent(selectedProduct.name)}`;
         window.open(whatsappURL, '_blank');
     };
     const handleCloseModal = () => {
