@@ -188,12 +188,6 @@ export default function Home() {
             />
 
             <T_Nosotros_H
-              Title="Explora Nuestro Blog de Cuidado de la piel y Bienestar personal!"
-              description="Creemos que el cuidado va más allá de un tratamiento. Nuestro blog está diseñado para compartir contigo los mejores consejos, tendencias y secretos del mundo de la estetica facial y corporal."
-              imgUrl={Img.img4}
-            />
-
-            <T_Nosotros_H
               Title="Ofertas y Promociones Exclusivas!"
               description="Te consentimos con nuestras ofertas y promociones especiales diseñadas para realzar tu belleza sin vaciar tu bolsillo. ¡Descubre las increíbles oportunidades que tenemos para ti!"
               imgUrl={Img.img5}
